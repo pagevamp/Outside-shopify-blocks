@@ -1,0 +1,96 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+
+
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+{% comment %} {% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%} {% endcomment %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class=" isolate gradient overflow-hidden collection-quick-add-standard">
+  <div class="{{section.settings.background_color}} bg-gray-200 collectio section-{{ section.id }}-padding"
+    id="collection-{{ section.id }}"
+    data-id="{{ section.id }}">
+    <div class="collection__title title-wrapper title-wrapper--no-top-margin container">
+      <div class="collection__title--with-right-content is-slider">
+        <div class="left">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="title h3 inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.heading }}
+            </h2>
+          {%- endif -%}
+          {%- if section.settings.description != blank -%}
+            <div class="collection__description  rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.description -}}
+            </div>
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+    <product-recommendations
+      class="related-products section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
+      data-section-id="{{ section.id }}"
+      data-product-id="{{ product.id }}">
+      {% if recommendations.performed and recommendations.products_count > 0 %}
+        <div class="col container swiper-container position-relative swiper-container--btn-top-layout"
+          {% if recommendations.products_count == 2 or recommendations.products_count == 3 or recommendations.products_count == 4 %}
+            data-slide="{{ recommendations.products_count }}"
+          {% endif %}>
+          <div class="swiper-button__wrapper d-none d-md-flex justify-content-between justify-content-md-start gap-md-2 align-items-end">
+            <div class="swiper-button swiper-button-prev btn btn-circle btn-circle--icon btn-circle--secondary btn-circle--outline z-1">
+              {% render 'icon-arrow-left' %}
+            </div>
+            <div class="swiper-button swiper-button-next btn btn-circle btn-circle--icon btn-circle--secondary btn-circle--outline z-1">
+              {% render 'icon-arrow-right' %}
+            </div>
+          </div>
+          <div class="swiper-wrapper" data-cart-recommendation>
+            {% assign skip_card_product_styles = true %}
+
+            {% for recommendation in recommendations.products %}
+              {% assign card_tags = recommendation.metafields.custom.product_tag %}
+              <div class="swiper-slide"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+                id="Slide-{{ section.id }}-{{ forloop.index }}">
+                {% render 'card-product-recommended',
+                  card_product: recommendation,
+                  media_aspect_ratio: 'adapt',
+                  skip_styles: skip_card_product_styles,
+                  section_id: section.id,
+                  quick_add: 'standard',
+                  card_tag: card_tags
+                %}
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      {% endif %}
+    </product-recommendations>
+
+
+  </div>
+</div>
+

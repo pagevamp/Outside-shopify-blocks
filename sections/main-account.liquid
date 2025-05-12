@@ -1,0 +1,231 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-account__wrapper {
+    max-width: 100%;
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-account__wrapper {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-account__wrapper {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="customer account m-account__wrapper position-relative px-0">
+  <div class="c-gradient--primary c-gradient--primary--opacity-35 position-absolute inset-0 d-block"></div>
+  <div class="container position-relative z-1">
+    <div class="row">
+      <div class="col">
+        <h1 class="customer__title h3">{{ 'customer.account.title' | t }}</h1>
+        <a href="{{ routes.account_logout_url }}" class="text-body-secondary text-secondary mx-0">
+          <span class="svg-wrapper">
+            {% render 'icon-list', svg: 'user' %}
+          </span>
+          {{ 'customer.log_out' | t }}
+        </a>
+        <div class="row mt-12">
+          <div class="col-md-9">
+            <h2 class="h4">{{ 'customer.orders.title' | t }}</h2>
+            {% paginate customer.orders by 20 %}
+              {%- if customer.orders.size > 0 -%}
+                <div class="no-order-history__wrapper pe-10">
+                  <table role="table" class="order-history text-body-secondary">
+                    <caption class="visually-hidden">
+                      {{ 'customer.orders.title' | t }}
+                    </caption>
+                    <thead role="rowgroup">
+                      <tr role="row">
+                        <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
+                        <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
+                        <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
+                        <th id="ColumnFulfillment" scope="col" role="columnheader">
+                          {{ 'customer.orders.fulfillment_status' | t }}
+                        </th>
+                        <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
+                      </tr>
+                    </thead>
+                    <tbody role="rowgroup">
+                      {%- for order in customer.orders -%}
+                        <tr role="row">
+                          <td
+                            id="RowOrder"
+                            role="cell"
+                            headers="ColumnOrder"
+                            data-label="{{ 'customer.orders.order_number' | t }}"
+                          >
+                            <a
+                              href="{{ order.customer_url }}"
+                              aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+                              class="text-primary"
+                            >
+                              {{ order.name }}
+                            </a>
+                          </td>
+                          <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
+                            {{ order.created_at | time_tag: format: 'date' }}
+                          </td>
+                          <td
+                            headers="RowOrder ColumnPayment"
+                            role="cell"
+                            data-label="{{ 'customer.orders.payment_status' | t }}"
+                          >
+                            {{ order.financial_status_label }}
+                          </td>
+                          <td
+                            headers="RowOrder ColumnFulfillment"
+                            role="cell"
+                            data-label="{{ 'customer.orders.fulfillment_status' | t }}"
+                          >
+                            {{ order.fulfillment_status_label }}
+                          </td>
+                          <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
+                            {{ order.total_net_amount | money_with_currency }}
+                          </td>
+                        </tr>
+                      {%- endfor -%}
+                    </tbody>
+                  </table>
+                </div>
+              {%- else -%}
+                <p>{{ 'customer.orders.none' | t }}</p>
+              {%- endif -%}
+              {%- if paginate.pages > 1 -%}
+                {%- if paginate.parts.size > 0 -%}
+                  <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                    <ul role="list">
+                      {%- if paginate.previous -%}
+                        <li>
+                          <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}" class="text-body-secondary text-secondary mx-0">
+                            <span class="svg-wrapper">
+                              {{- 'icon-caret.svg' | inline_asset_content -}}
+                            </span>
+                          </a>
+                        </li>
+                      {%- endif -%}
+                      {%- for part in paginate.parts -%}
+                        <li>
+                          {%- if part.is_link -%}
+                            <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}" class="text-body-secondary text-secondary mx-0">
+                              {{- part.title -}}
+                            </a>
+                          {%- else -%}
+                            {%- if part.title == paginate.current_page -%}
+                              <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                                {{- part.title -}}
+                              </span>
+                            {%- else -%}
+                              <span>{{ part.title }}</span>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+                      {%- if paginate.next -%}
+                        <li>
+                          <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}" class="text-body-secondary text-secondary mx-0">
+                            <span class="svg-wrapper">
+                              {{- 'icon-caret.svg' | inline_asset_content -}}
+                            </span>
+                          </a>
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  </nav>
+                {%- endif -%}
+              {%- endif -%}
+            {% endpaginate %}
+          </div>
+          <div class="col-md-3">
+            <h2 class="h4">{{ 'customer.account.details' | t }}</h2>
+            <div class="text-body-secondary">{{ customer.default_address | format_address }}</div>
+            <a href="{{ routes.account_addresses_url }}" class="text-body-secondary text-secondary mx-0 mt-3">
+              {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "tag": "section",
+    "class": "m-account",
+    "settings": [
+      {
+        "type": "header",
+        "content": "SPACING SETTINGS"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Desktop",
+        "default": 54
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Desktop",
+        "default": 128
+      },
+      {
+        "type": "range",
+        "id": "padding_top_tablet",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Tablet",
+        "default": 54
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_tablet",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Tablet",
+        "default": 74
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Mobile",
+        "default": 78
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Mobile",
+        "default": 78
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,237 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-fifty-fifty__wrapper {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-fifty-fifty__wrapper {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-fifty-fifty__wrapper {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="m-fifty-fifty__wrapper bg-white overflow-hidden">
+  <div class="container">
+    <div class="row g-md-22 g-xl-5 gap-4 gap-md-0">
+      <div class="col-md-6 order-1 order-md-0">
+        <div class="m-fifty-fifty__content d-flex flex-column align-items-md-start gap-4 gap-md-8 pt-md-5 pt-xl-12 ps-xl-18 text-center text-md-start">
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.title_tag }} class="m-fifty-fifty__heading h2 m-0 text-secondary">
+              {{ section.settings.heading | newline_to_br }}
+            </{{ section.settings.title_tag }}>
+          {% endif %}
+
+          {%- if section.settings.button_label != blank -%}
+            <a
+              {% if section.settings.button_link == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link }}"
+              {% endif %}
+              class="btn btn-{{ section.settings.button_style }}"
+            >
+              {{ section.settings.button_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="col-md-6 order-0 order-md-1">
+        {% if section.settings.image != blank %}
+          <picture class="m-fifty-fifty__picture d-block pe-xl-22">
+            <img
+              srcset="
+                {%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+                {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
+              "
+              src="{{ section.settings.image | image_url: width: 600 }}"
+              alt="{{ section.settings.image.alt | default: shop.name }}"
+              loading="lazy"
+              data-src="{{ section.settings.image | image_url }}"
+              data-widths="[540, 720]"
+              data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio | round }}"
+              class="w-100 h-auto object-fit-cover"
+            >
+          </picture>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Fifty Fifty",
+  "tag": "section",
+  "class": "m-fifty-fifty",
+  "settings": [
+    {
+      "type": "header",
+      "content": "TITLE SETTINGS"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Transform your online store today"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Heading Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "BUTTON SETTINGS"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Buy now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Links",
+      "default": "/"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "secondary-white",
+          "label": "Secondary White"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "header",
+      "content": "IMAGE SETTINGS"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "SECTION SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 102
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 104
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 138
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fifty Fifty"
+    }
+  ]
+}
+{% endschema %}

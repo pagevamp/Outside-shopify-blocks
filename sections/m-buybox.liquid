@@ -1,0 +1,316 @@
+{% style %}
+  @media(min-width:990px) {
+    .c-box-product {
+      margin: 0 -0.125rem;
+    }
+  }
+  @media(min-width:1200px) {
+    .c-box-product {
+      margin: 0 -0.75rem;
+    }
+  }
+{% endstyle %}
+<div class="m-buy-box__wrapper {{ section.settings.background_class }} pt-19 pb-24 pt-lg-32 pb-lg-14 pt-xl-28 pb-xl-32" id="{{ section.settings.section_id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center" style="color:{{ section.settings.title_color }}"> 
+        {% if section.settings.heading != blank %}
+          <{{ section.settings.title_tag }} class="m-buy-box__heading h3 mb-12 mb-md-16 mb-xl-19">
+            {{ section.settings.heading | newline_to_br }}
+          </{{ section.settings.title_tag }}>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row row-gap-16 row-gap-md-0 column-gap-xl-20 justify-content-center" style="color:{{ section.settings.text_color }}">
+      {% assign box_products = section.blocks | where: 'type', 'box_products' %}
+      {% for block in box_products %}
+        {% liquid
+          assign box_product_image = block.settings.box_product_image
+          assign box_product_title = block.settings.box_product_title
+          assign box_product_title_tag = block.settings.box_product_title_tag
+          assign box_product_description = block.settings.box_product_description
+          assign box_cta_label = block.settings.box_cta_label
+          assign box_cta_style = block.settings.box_cta_style
+          assign box_cta_link = block.settings.box_cta_link
+          assign block_id = block.id
+
+        %}
+
+        <div class="col-md-4 col-xl-3 d-flex">
+          {% render 'c-box-product',
+            box_product: all_products[block.settings.box_product],
+            box_product_image: box_product_image,
+            box_product_title: box_product_title,
+            box_product_title_tag: box_product_title_tag,
+            box_product_description: box_product_description,
+            box_cta_label: box_cta_label,
+            box_cta_style: box_cta_style,
+            box_cta_link: box_cta_link,
+            block_id: block_id
+          %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% if section.settings.footer_cta_label != blank%}
+  <div class="m-buybox__footer text-center">
+    <div class="container">
+    <a {% if section.settings.footer_cta_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.footer_cta_link }}"{% endif %}
+      class="link text-decoration-underline" {{ section.shopify_attributes }}>
+        <span>{{ section.settings.footer_cta_label }}</span>
+        {% render 'icon-list', svg: 'arrow-right' %}
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Buy Box",
+    "tag": "section",
+    "class": "m-buy-box",
+    "settings": [
+      {
+        "type": "header",
+        "content": "BUY BOX SETTINGS"
+      },
+      {
+        "type": "text",
+        "id": "section_id",
+        "label": "Section ID"
+      },
+      {
+        "type": "header",
+        "content": "SECTION BACKGROUND SETTINGS"
+      },
+      {
+        "type": "select",
+        "id": "background_class",
+        "label": "Background Color",
+        "options": [
+          {
+            "label": "Secondary Navy",
+            "value": "bg-secondary"
+          },
+          {
+            "label": "Primary Sapphire",
+            "value": "bg-primary"
+          },
+          {
+            "label": "White",
+            "value": "bg-white"
+          },
+          {
+            "label": "Transparent",
+            "value": "bg-transparent"
+          }
+        ],
+        "default": "bg-transparent"
+      },
+      {
+        "type": "header",
+        "content": "TITLE SETTINGS"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Payment solutions to help you grow your business"            
+      },
+      {
+        "type": "select",
+        "id": "title_tag",
+        "label": "Heading Tag",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          }
+        ],
+        "default": "h2"
+      },
+      {
+        "type": "select",
+        "id": "title_color",
+        "label": "Title Color",
+        "options": [
+          {
+            "value": "var(--navy)",
+            "label": "Secondary(Navy)"
+          },
+          {
+            "value": "var(--sapphire)",
+            "label": "Primary(sapphire)"
+          },
+          {
+            "value": "var(--boldsapphire)",
+            "label": "Bold sapphire"
+          },
+          {
+            "value": "var(--white)",
+            "label": "White"
+          }
+        ],
+        "default": "var(--sapphire)"
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "var(--navy)",
+            "label": "Secondary(Navy)"
+          },
+          {
+            "value": "var(--sapphire)",
+            "label": "Primary(sapphire)"
+          },
+          {
+            "value": "var(--white)",
+            "label": "White"
+          }
+        ],
+        "default": "var(--navy)"
+      },
+      {
+        "type": "text",
+        "id": "footer_cta_label",
+        "label": "footer Cta Label",
+        "default": "Contact sales"
+      },
+      {
+        "type": "url",
+        "id": "footer_cta_link",
+        "label": "footer Cta Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "box_products",
+        "name": "BOX PRODUCTS",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "header",
+            "content": "PRODUCT SETTINGS"
+          },
+          {
+            "type": "product",
+            "id": "box_product",
+            "label": "Box Product"
+          },
+          {
+            "type": "header",
+            "content": "IMAGE SETTINGS"
+          },
+          {
+            "type": "image_picker",
+            "id": "box_product_image",
+            "label": "Box Product Image"
+          },
+          {
+            "type": "header",
+            "content": "TEXT SETTINGS"
+          },
+          {
+            "type": "text",
+            "id": "box_product_title",
+            "label": "Box Product Title"
+          },
+          {
+            "type": "select",
+            "id": "box_product_title_tag",
+            "label": "Heading Tag",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              }
+            ],
+            "default": "h4"
+          },
+          {
+            "type": "richtext",
+            "id": "box_product_description",
+            "label": "Box Product Description"
+          },
+          {
+            "type": "header",
+            "content": "BUTTON SETTINGS"
+          },
+          {
+            "type": "text",
+            "id": "box_cta_label",
+            "label": "Box Cta Label",
+            "default": "Buy Now"
+          },
+          {
+            "type": "url",
+            "id": "box_cta_link",
+            "label": "Box Cta Link"
+          },
+          {
+            "type": "select",
+            "id": "box_cta_style",
+            "label": "Box Cta Style",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "secondary-white",
+                "label": "Secondary White"
+              }
+            ],
+            "default": "primary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Buy Box"
+      }
+    ]
+  }
+{% endschema %}
+  

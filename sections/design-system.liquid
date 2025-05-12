@@ -1,0 +1,1048 @@
+{{ 'ni_styleguide.min.css' | asset_url | stylesheet_tag }}
+
+<div class="theme-app d-flex flex-column">
+  <div class="theme-wrap">
+    <div class="site-overlay"></div>
+    <main class="theme-main pt-0">
+      <div class="styleguide-wrap">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <header class="styleguide-header">
+                <h4 class="mb-0 text-primary">Network Internation - Development Guidelines</h4>
+              </header>
+            </div>
+          </div>
+
+          <div class="row justify-content-lg-between">
+            <div class="col-lg-2">
+              <aside class="sidebar sticky-top">
+                <ul class="list-group list-unstyled" id="anchorListWrap">
+                  <li class="list-group-item">
+                    <a href="#branding" class="anchor-link">Branding and Colors</a>
+                  </li>
+                  {% comment %}
+                    <li class="list-group-item">
+                      <a href="#shadow" class="anchor-link">Shadows</a>
+                    </li>
+                  {% endcomment %}
+                  <li class="list-group-item">
+                    <a href="#typography" class="anchor-link">Typography</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#icons" class="anchor-link">Icon Lists</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#components" class="anchor-link">Reusable Components</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#forms" class="anchor-link">Forms</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#textures" class="anchor-link">Textures</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#grid" class="anchor-link">Grid Systems</a>
+                  </li>
+                </ul>
+              </aside>
+            </div>
+
+            <div class="col-lg-10">
+              <div class="ps-5">
+                <section class="content-wrap" id="branding">
+                  <div class="row">
+                    <div class="col">
+                      <header class="mb-5">
+                        <h2 class="mb-0">Branding and colors</h2>
+                      </header>
+                      <div class="brand-color-row">
+                        <header class="mb-5">
+                          <h3 class="mb-0">Primary Colors</h3>
+                        </header>
+                        <div class="row mb-5">
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-sapphire border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Sapphire</strong>
+                              <small class="mb-4 d-block">
+                                <i>$Sapphire</i>
+                                <span class="font-size-12 d-block mb-1">#026FAF</span>
+                              </small>
+                              <code class="bg-secondary text-white mt-auto">.bg-Sapphire, bg-primary</code>
+                              <code class="bg-secondary text-white mt-4">var(--Sapphire)</code>
+                            </span>
+                          </div>
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-amaranth border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">amaranth</strong>
+                              <small class="mb-4 d-block">
+                                <i>$amaranth</i>
+                                <span class="font-size-12 d-block mb-1">#E54460</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-amaranth .bg-red</code>
+                              <code class="bg-white text-secondary mt-4">var(--amaranth)</code>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="brand-color-row">
+                        <header class="mb-5">
+                          <h3 class="mb-0">Extended Palette</h3>
+                        </header>
+                        <div class="row mb-5">
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-salmon border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Salmon</strong>
+                              <small class="mb-4 d-block">
+                                <i>$Salmon</i>
+                                <span class="font-size-12 d-block mb-1">#F16767</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-salmon</code>
+                              <code class="bg-white text-secondary mt-4">var(--salmon)</code>
+                            </span>
+                          </div>
+
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-bold-amaranth border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Bold Amaranth</strong>
+                              <small class="mb-4 d-block">
+                                <i>$bold-amaranth</i>
+                                <span class="font-size-12 d-block mb-1">#E12E56</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-bold-amaranth</code>
+                              <code class="bg-white text-secondary mt-4">var(--bold-amaranth)</code>
+                            </span>
+                          </div>
+
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-teal border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Teal</strong>
+                              <small class="mb-4 d-block">
+                                <i>$teal</i>
+                                <span class="font-size-12 d-block mb-1">#029997</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-teal</code>
+                              <code class="bg-white text-secondary mt-4">var(--teal)</code>
+                            </span>
+                          </div>
+
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-bold-sapphire border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Bold Sapphire</strong>
+                              <small class="mb-4 d-block">
+                                <i>$bold-sapphire</i>
+                                <span class="font-size-12 d-block mb-1">#036AB1</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-bold-sapphire</code>
+                              <code class="bg-white text-secondary mt-4">var(--boldsapphire)</code>
+                            </span>
+                          </div>
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-pacific-blue border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Pacific Blue</strong>
+                              <small class="mb-4 d-block">
+                                <i>$pacific-blue</i>
+                                <span class="font-size-12 d-block mb-1">#145F94</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-pacific-blue</code>
+                              <code class="bg-white text-secondary mt-4">var(--pacific-blue)</code>
+                            </span>
+                          </div>
+
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-navy border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Navy</strong>
+                              <small class="mb-4 d-block">
+                                <i>$navy</i>
+                                <span class="font-size-12 d-block mb-1">#1A315B</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-navy, .bg-secondary</code>
+                              <code class="bg-white text-secondary mt-4">var(--navy)</code>
+                            </span>
+                          </div>
+
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-cloud border border-divider d-block px-4 py-4 text-secondary h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">cloud</strong>
+                              <small class="mb-4 d-block">
+                                <i>$cloud</i>
+                                <span class="font-size-12 d-block mb-1">#F0F4F7</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-cloud</code>
+                              <code class="bg-white text-secondary mt-4">var(--cloud)</code>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="brand-color-row">
+                        <header class="mb-5">
+                          <h3 class="mb-0">Black and White</h3>
+                        </header>
+                        <div class="row mb-5">
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-gray border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Gray</strong>
+                              <small class="mb-4 d-block">
+                                <i>$gray/ $gray-900/ $dark</i>
+                                <span class="font-size-12 d-block mb-1">#212529</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-gray</code>
+                              <code class="bg-white text-secondary mt-4">var(--gray)</code>
+                            </span>
+                          </div>
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-gray-dark border border-divider d-block px-4 py-4 text-white  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Gray Dark</strong>
+                              <small class="mb-4 d-block">
+                                <i>$gray-dark</i>
+                                <span class="font-size-12 d-block mb-1">#E54460</span>
+                              </small>
+                              <code class="bg-white text-secondary mt-auto">.bg-gray-dark</code>
+                              <code class="bg-white text-secondary mt-4">var(--gray-dark)</code>
+                            </span>
+                          </div>
+                          <div class="col-md-4 mb-5">
+                            
+                          </div>
+
+                          <div class="col-md-4 mb-5">                            <span class="bg-bold-mist border border-divider d-block px-4 py-4 text-secondary  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">Bold Mist</strong>
+                              <small class="mb-4 d-block">
+                                <i>$bold-mist</i>
+                                <span class="font-size-12 d-block mb-1">#E5E5E5</span>
+                              </small>
+                              <code class="bg-secondary text-white mt-auto">.bg-bold-mist</code>
+                              <code class="bg-secondary text-white mt-4">var(--bold-mist)</code>
+                            </span>
+                          </div>
+                          <div class="col-md-4 mb-5">
+                            <span class="bg-white border border-divider d-block px-4 py-4 text-secondary  h-100 d-flex flex-column justify-flex-start">
+                              <strong class="d-block">White</strong>
+                              <small class="mb-4 d-block">
+                                <i>$white</i>
+                                <span class="font-size-12 d-block mb-1">#FFFFFF</span>
+                              </small>
+                              <code class="bg-secondary text-white mt-auto">.bg-white</code>
+                              <code class="bg-secondary text-white mt-4">var(--white)</code>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="brand-color-row">
+                        <header class="mb-5">
+                          <h3 class="mb-0">Gradients</h3>
+                        </header>
+                        <div class="row mb-5">
+                          <div class="col-md-4 mb-5">
+                            <span class="c-gradient--primary border border-divider d-block px-4 py-4 text-dark  h-100 d-flex flex-column justify-flex-start opacity-1">
+                              <strong class="d-block">Gradient Primary</strong>
+                              <small class="mb-4 d-block">
+                                <i>var(--Gradient, linear-gradient(180deg, #FFF 1%, #F0F4F7 3%, var(--Sapphire, #026FAF) 71.5%))</i>
+                              </small>
+                              <code class="bg-secondary text-white mt-auto">.c-gradient--primary</code>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </section>
+
+                {% comment %}
+                  <section class="content-wrap text-secondary" id="shadow">
+                    <div class="row gb-5">
+                      <div class="col-16">
+                        <header class="mb-5">
+                          <h3 class="mb-0">Shadow</h3>
+                        </header>
+                      </div>
+
+                      <div class="col-16">
+                        <div class="shadow-none p-3 mb-5 bg-primary text-cloud rounded">No shadow</div>
+                        <div class="shadow-sm p-3 mb-5 bg-body rounded">Small shadow</div>
+                        <div class="shadow p-3 mb-5 bg-body rounded">Regular shadow</div>
+                        <div class="shadow-lg p-3 mb-5 bg-body rounded">Larger shadow</div>
+                      </div>
+                    </div>
+                  </section>
+                {% endcomment %}
+                <section class="content-wrap text-secondary" id="typography">
+                  <div class="row gb-5">
+                    <div class="col-16">
+                      <header class="mb-5">
+                        <h3 class="h2 mb-0">Typography</h3>
+                      </header>
+                      <h3 class="h3 mb-5">All Heading</h3>
+                      <p class="text-secondary">Font-weight: Medium(500), Letter Spacing: -4% (0.04em)</p>
+                    </div>
+
+                    <div class="col-16">
+                      <div class="mt-8 mb-8">
+                        <h1>h1 - Heading 1</h1>
+                        <p class="text-secondary">Desktop - 4rem/64px Tablet 3.25rem/52px Mobile 3rem/48px </p>
+                      </div>
+                      <div class="mb-8">
+                        <h2>h2 - Heading 2</h2>
+                        <p class="text-secondary">Desktop - 3rem/48px Tablet 2.75rem/44px Mobile 2.5rem/40px </p>
+                      </div>
+
+                      <div class="mb-8">
+                        <h3>h3 - Heading 3</h3>
+                        <p class="text-secondary">Desktop - 2.5rem/40px Tablet 2.25rem/36px Mobile 2rem/32px </p>
+                      </div>
+
+                      <div class="mb-8">
+                        <h4>h4 - Heading 4</h4>
+                        <p class="text-secondary">Desktop - 2rem/32px Tablet 1.875rem/30px Mobile 1.75rem/28px </p>
+                      </div>
+
+                      <div class="mb-8">
+                        <h5>h5 - Heading 5</h5>
+                        <p class="text-secondary">Desktop - 1.5rem/24px Tablet 1.375rem/22px Mobile 1.25rem/20px </p>
+                      </div>
+                    </div>
+
+                    <hr class="my-10">
+                    <div class="col-16">
+                      <header class="mb-5">
+                        <h3 class="mb-0">Text</h3>
+                      </header>
+                    </div>
+                    <div class="col-16">
+                      <div class="mb-8">
+                        <p class="text-body-primary mb-0">Primary Body <span class="small-caption">(.text-body-primary)</span></p>
+                        <p class="text-secondary">Desktop - 1.25rem/20px Tablet 1.125rem/18px Mobile 1rem/16px </p>
+                      </div>
+                      <div class="mb-8">
+                        <p class="text-body-secondary mb-0">Secondary Body <span class="small-caption">(.text-body-secondary)</span></p>
+                        <p class="text-secondary">Desktop - 1.125rem/18px Tablet 1rem/16px Mobile 0.875rem/14px </p>
+                      </div>
+                      <div class="mb-8">
+                        <p class="big-caption mb-0">Big Caption <span class="small-caption">(.big-caption)</span></p>
+                        <p class="text-secondary">Desktop - 1.125rem/18px Tablet/Mobile 1rem/16px</p>
+                      </div>
+                      <div class="mb-8">
+                        <p class="caption mb-0">Caption <span class="small-caption">(.caption)</span></p>
+                        <p class="text-secondary">Desktop/ Tablet - 0.875rem/14px Mobile 0.75rem/12px</p>
+                      </div>
+                      <div class="mb-8">
+                        <p class="small-caption mb-0">Small Caption <span class="small-caption">(.small-caption)</span></p>
+                        <p class="text-secondary">Desktop/ Tablet/ Mobile - 0.75rem/12px </p>
+                      </div>
+                      <div class="mb-8">
+                        <p class="eyebrow mb-0">Eyebrow<span class="small-caption">(.eyebrow)</span></p>
+                        <p class="text-secondary">Desktop/ Tablet - 1rem/16px Mobile 0.875rem/14px </p>
+                      </div>
+                      <div class="mb-8">
+                        <p class="text-button mb-0">Button Text/ Link Text <span class="small-caption">(.text-button/ .text-link)</span></p>
+                        <p class="text-secondary">Desktop/ Tablet - 1rem/16px Mobile 0.875rem/14px </p>
+                      </div>
+
+                    </div>
+
+                    <h4 class="mt-5 mb-3">Text Colors</h4>
+                    <div class="p-5 border border-brown-grey">
+                      <h5 class="p-2 text-primary">
+                        .text-primary -
+                        <strong>$primary</strong>
+                      </h5>
+                      <h5 class="p-2 text-secondary">
+                        .text-secondary -
+                        <strong>$secondary</strong>
+                      </h5>
+                      <h5 class="bg-secondary p-2 text-cloud">
+                        .text-cloud -
+                        <strong>$cloud</strong>
+                      </h5>
+                      <h5 class="p-2 text-bold-sapphire">
+                        .text-bold-sapphire -
+                        <strong>$bold-sapphire</strong>
+                      </h5>
+                      <h5 class="bg-secondary p-2 text-white">
+                        .text-white -
+                        <strong>$white</strong>
+                      </h5>
+                      <h5 class="p-2 text-gray-dark">
+                        .text-gray-dark -
+                        <strong>$gray-dark</strong>
+                      </h5>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="content-wrap text-secondary" id="icons">
+                  <div class="row">
+                    <div class="col">
+                      <header class="mb-5">
+                        <h3 class="mb-0">Icon Lists</h3>
+                      </header>
+
+                      <div class="row content-wrap__icon">
+                        <div class="col-16">
+                          <div class="text-xsmall mb-5">
+                            <span class="bg-brand text-white pill pill-badge-brand d-inline-block p-3">
+                              <strong>PS</strong>
+                              : Icons will be implemented as snippets in shopify instead of icon font.
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, account</p>
+                          {% render 'icon-list', svg: 'account' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, cart</p>
+                          {% render 'icon-list', svg: 'cart' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, arrow-right</p>
+                          {% render 'icon-list', svg: 'arrow-right' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, arrow-right</p>
+                          {% render 'icon-list', svg: 'arrow-right' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, hamburger</p>
+                          {% render 'icon-list', svg: 'hamburger' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, icon-close</p>
+                          {% render 'icon-list', svg: 'icon-close' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, printer</p>
+                          {% render 'icon-list', svg: 'printer' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, stop</p>
+                          {% render 'icon-list', svg: 'stop' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, chain</p>
+                          {% render 'icon-list', svg: 'chain' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, message</p>
+                          {% render 'icon-list', svg: 'message' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, caret</p>
+                          {% render 'icon-list', svg: 'caret' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, arrow-left-line</p>
+                          {% render 'icon-list', svg: 'arrow-left-line' %}
+                        </div>
+                        <div class="col-5 col-md-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">icon-list, arrow-right-line</p>
+                          {% render 'icon-list', svg: 'arrow-right-line' %}
+                        </div>
+                        <div class="row content-wrap__icon-lg">
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, message-circle</p>
+                            {% render 'icon-list', svg: 'message-circle' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, user</p>
+                            {% render 'icon-list', svg: 'user' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, clock</p>
+                            {% render 'icon-list', svg: 'clock' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, lightning</p>
+                            {% render 'icon-list', svg: 'lightning' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, box</p>
+                            {% render 'icon-list', svg: 'box' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, shield</p>
+                            {% render 'icon-list', svg: 'shield' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, loading</p>
+                            {% render 'icon-list', svg: 'loading' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, globe</p>
+                            {% render 'icon-list', svg: 'globe' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, tools</p>
+                            {% render 'icon-list', svg: 'tools' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, shield-tick</p>
+                            {% render 'icon-list', svg: 'shield-tick' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, clock-circle</p>
+                            {% render 'icon-list', svg: 'clock-circle' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, chain-large</p>
+                            {% render 'icon-list', svg: 'chain-large' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, layers</p>
+                            {% render 'icon-list', svg: 'layers' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, share</p>
+                            {% render 'icon-list', svg: 'share' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, money</p>
+                            {% render 'icon-list', svg: 'money' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, shop</p>
+                            {% render 'icon-list', svg: 'shop' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, envelop</p>
+                            {% render 'icon-list', svg: 'envelop' %}
+                          </div>
+                          <div class="col-5 col-md-3 mb-5">
+                            <span class="d-block py-2">
+                            </span>
+                            <p class="text-small">icon-list, group</p>
+                            {% render 'icon-list', svg: 'group' %}
+                          </div>
+                        </div>
+                        
+                      </div>
+
+                      <div class="row">
+                        <div class="col-16">
+                          <h3 class="mb-0 mt-14">Icon Lists Social</h3>
+                        </div>
+                        <div class="col-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">social-icon-list, facebook</p>
+                            {% render 'social-icon-list', icon: 'facebook' %}
+                        </div>
+                        <div class="col-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">social-icon-list, linkedin</p>
+                            {% render 'social-icon-list', icon: 'linkedin' %}
+                        </div>
+                        <div class="col-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">social-icon-list, youtube</p>
+                            {% render 'social-icon-list', icon: 'youtube' %}
+                        </div>
+                        <div class="col-3 mb-5">
+                          <span class="d-block py-2">
+                          </span>
+                          <p class="text-small">social-icon-list, instagram</p>
+                            {% render 'social-icon-list', icon: 'instagram' %}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <h3 class="mb-0 mt-14">Icon Lists Social</h3>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="content-wrap text-secondary" id="components">
+                  <div class="row">
+                    <div class="col">
+                      <header class="mb-5">
+                        <h4 class="mb-10">Reusable Components</h4>
+                        <h3 class="mb-0">Normal Buttons</h3>
+                      </header>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h5 class="mb-2">Button Primary with Icon fullwidth</h5>
+                          <div class="p-5 mb-10">
+                            <a href="#" class="btn btn-primary w-100">
+                              {% render 'icon-list', svg: 'cart' %}
+                              <span>Add to basket</span>
+                            </a>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;btn btn-primary w-100&quot;&gt;
+                                  { % render 'icon-list', svg: 'cart' -% }
+                                  &lt;span&gt;Add to basket&lt;/span&gt;
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h5 class="mb-2">Button Primary</h5>
+                          <div class="p-5 mb-10">
+                            <a href="#" class="btn btn-primary">
+                              Buy now
+                            </a>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;btn btn-primary&quot;&gt;
+                                    Buy now
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h5 class="mb-2">Button Secondary</h5>
+                          <div class="p-5 mb-10">
+                            <a href="#" class="btn btn-secondary">
+                              Buy now
+                            </a>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;btn btn-secondary&quot;&gt;
+                                    Buy now
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h5 class="mb-2">Button Secondary White</h5>
+                          <div class="p-5 mb-10">
+                            <a href="#" class="btn btn-secondary-white">
+                              Buy now
+                            </a>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;btn btn-secondary-white&quot;&gt;
+                                    Buy now
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                      <h3 class="my-10">Normal Link</h3>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h5 class="mb-2">Link Primary</h5>
+                          <div class="p-5 mb-10">
+                            <a href="#" class="link">
+                              <span>Buy now</span>
+                              {% render 'icon-list', svg: 'arrow-right' %}
+                            </a>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;
+                                { % render 'icon-list', svg: 'arrow-right' -% }
+                                  &lt;span&gt;Buy now&lt;/span&gt;
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                      <h3 class="my-10">Arrow Button</h3>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="p-5 mb-10 bg-cloud">
+                            <div class="d-flex column-gap-1 position-relative">
+                              <a href="#" class="btn-arrow swiper-button-disabled">
+                                {% render 'icon-list', svg: 'arrow-left-line' %}
+                              </a>
+                              <a href="#" class="btn-arrow">
+                                {% render 'icon-list', svg: 'arrow-right-line' %}
+                              </a>
+                            </div>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;
+                                { % render 'icon-list', svg: 'arrow-right' -% }
+                                  &lt;span&gt;Buy now&lt;/span&gt;
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                      <h3 class="my-10">Eyebrow with line</h3>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="p-5 mb-10 bg-cloud">
+                            <div class="d-flex column-gap-1">
+                              <p class="eyebrow eyebrow-with-line text-bold-sapphire">
+                                Accept Payments
+                              </p>
+                            </div>
+                            <pre class="p-0 mt-5">
+                              <code>
+                                &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;
+                                { % render 'icon-list', svg: 'arrow-right' -% }
+                                  &lt;span&gt;Buy now&lt;/span&gt;
+                                &lt;/a&gt;
+                              </code>
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="content-wrap text-secondary" id="forms">
+                  <div class="row">
+                    <div class="col">
+                      <header class="mb-5">
+                        <h3 class="mb-0">Forms</h3>
+                      </header>
+                      <h5 class="mb-2">Custom Radio</h5>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <form action="#" method="post">
+                            <div class="ni-form-group ni-form-group--styled">
+                              <legend class="text-button mb-4 text-neutral-60">Choose a Modal</legend>
+                              <fieldset>
+                                <div class="ni-form-check">
+                                  <input
+                                    class="ni-form-check-input"
+                                    type="radio"
+                                    name="modal"
+                                    id="android"
+                                    value="android"
+                                    checked
+                                  >
+                                  <label class="ni-form-check-label" for="android">Android</label>
+                                </div>
+                                <div class="ni-form-check">
+                                  <input
+                                    class="ni-form-check-input"
+                                    type="radio"
+                                    name="modal"
+                                    id="ios"
+                                    value="ios"
+                                  >
+                                  <label class="ni-form-check-label" for="ios">iOS</label>
+                                </div>
+                              </fieldset>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="row mt-10">
+                        <div class="col-md-8 pe-18">
+                          <form action="#" method="post">
+                            <div class="ni-form-group ni-form-group--styled ni-form-group--adv">
+                              <legend class="text-button mb-4 text-neutral-60">Choose a Modal</legend>
+                              <fieldset>
+                                <div class="ni-form-check">
+                                  <input
+                                    class="ni-form-check-input"
+                                    type="radio"
+                                    name="modal-printer"
+                                    id="printer"
+                                    value="printer"
+                                    checked
+                                  >
+                                  <label class="ni-form-check-label" for="printer">
+                                    <div class="d-flex column-gap-3">
+                                      {% render 'icon-list', svg: 'printer' %}
+                                      <div class="d-flex flex-column">
+                                        <span class="text-button">With Printer</span>
+                                        <span class="small-caption">Includes 1 box of paper rolls</span>
+                                      </div>
+                                    </div>
+                                  </label>
+                                </div>
+                                <div class="ni-form-check">
+                                  <input
+                                    class="ni-form-check-input"
+                                    type="radio"
+                                    name="modal-printer"
+                                    id="no-printer"
+                                    value="no-printer"
+                                    checked
+                                  >
+                                  <label class="ni-form-check-label" for="no-printer">
+                                    <div class="d-flex column-gap-3">
+                                      {% render 'icon-list', svg: 'stop' %}
+                                      <div class="d-flex flex-column">
+                                        <span class="text-button">Without Printer</span>
+                                        <span class="small-caption">Just the terminal</span>
+                                      </div>
+                                    </div>
+                                  </label>
+                                </div>
+                              </fieldset>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                        <div class="mt-10 mb-5">
+                          <h5 class="mb-2">Theme Form</h5>
+                          <div class="row mb-5">
+                            <div class="col">
+                              <div class="px-10 py-20 position-relative">
+                                <div class="c-gradient--primary position-absolute inset-0 d-block"></div>
+                                <form action="/signup" method="post" class="d-flex justify-content-center z-1 position-relative">
+                                  <div class="ni-form col-7">
+                                    <h3 class="h3">Create Account</h3>
+                                    <!-- First Name -->
+                                    <div class="form-group">
+                                      <label for="first-name">First name<span aria-hidden="true">*</span></label>
+                                      <input
+                                        type="text"
+                                        id="first-name"
+                                        name="first_name"
+                                        placeholder="Victoria"
+                                        required
+                                        autocomplete="given-name"
+                                      >
+                                    </div>
+                                    <!-- Last Name -->
+                                    <div class="form-group">
+                                      <label for="last-name">Last name<span aria-hidden="true">*</span></label>
+                                      <input
+                                        type="text"
+                                        id="last-name"
+                                        name="last_name"
+                                        placeholder="Smith"
+                                        required
+                                        autocomplete="family-name"
+                                      >
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="form-group">
+                                      <label for="email">Email Address<span aria-hidden="true">*</span></label>
+                                      <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="victoria@networkinternational.com"
+                                        required
+                                        autocomplete="email"
+                                      >
+                                    </div>
+                                    <!-- Password -->
+                                    <div class="form-group">
+                                      <label for="password">Password<span aria-hidden="true">*</span></label>
+                                      <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        placeholder="*****************"
+                                        required
+                                        autocomplete="new-password"
+                                      >
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <div class="form-group mt-9">
+                                      <button type="submit" class="btn btn-primary">Create Account</button>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-5">
+                            <div class="col">
+                              <pre class="p-0">
+                                <code>
+                                   &lt;form&nbsp;class=&quot;wpcf7-form&nbsp;init&nbsp;wpcf7-acceptance-as-validation&quot;&gt;<br/>
+                                         &nbsp;&nbsp;&nbsp;&lt;div class=&quot;form-group mb-3&quot;&gt;<br/>
+                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for=&quot;name&quot;&gt;Attachments&lt;/label&gt;<br/>
+                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class=&quot;d-block info-spanner mb-4&quot;&gt;Supported file types, max file size&lt;/span&gt;<br/>
+                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&lt;input type=&quot;file&quot; class=&quot;form-control&quot; id=&quot;name&quot; placeholder=&quot;Firstname Lastname&quot;&gt;<br/>
+                                         &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
+                                   &lt;/form&gt;
+                                </code>
+                             </pre>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </section>
+
+                {% comment %}
+                  <section class="content-wrap" id="modal">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="text-xsmall link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Launch demo modal
+                    </button>
+                  </section>
+                {% endcomment %}
+
+                <section class="content-wrap text-secondary" id="grid">
+                  <div class="row">
+                    <div class="col">
+                      <header class="mb-5">
+                        <h4 class="text-secondary mb-0">Grid system</h4>
+                        <p class="mb-0">Max container width - 1440px</p>
+                        <p># of columns - 12</p>
+                      </header>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">1</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">2</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">3</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">4</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">5</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">6</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">7</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">8</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">9</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">10</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">11</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">12</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">13</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">14</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">15</span>
+                    </div>
+                    <div class="col-md-1 text-center">
+                      <span class="bg-primary text-cloud d-block p-3">16</span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Design System",
+  "class": "spaced-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Design System"
+    }
+  ]
+}
+{% endschema %}

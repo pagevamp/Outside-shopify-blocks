@@ -1,0 +1,205 @@
+{{ 'ni_online_payments.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-online-payments__wrapper {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+
+    @media (min-width: 768px){
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+
+    @media (min-width: 1025px){
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="m-online-payments__wrapper bg-cloud">
+  <div class="container d-flex flex-column gap-12">
+    {% if section.settings.heading != blank or section.settings.description != blank %}
+      <div class="row">
+        <div class="col text-center d-flex flex-column gap-4 gap-md-6 text-secondary">
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.title_tag }} class="m-online-payments__heading h2 m-0">
+              {{ section.settings.heading }}
+            </{{ section.settings.title_tag }}>
+          {% endif %}
+
+          {% if section.settings.description != blank %}
+            <div class="m-online-payments__description text-body-primary">
+              {{ section.settings.description | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="m-online-payments__logos d-flex flex-wrap justify-content-center align-items-center column-gap-10 column-gap-md-14 row-gap-6">
+      {% assign logos = section.blocks | where: 'type', 'logo' %}
+
+      {% for block in logos %}
+        {% if block.settings.online_payment_logo != blank %}
+          <picture class="m-online-payments__picture d-block">
+            <img
+                srcset="{%- if block.settings.online_payment_logo.width >= 375 -%}{{ block.settings.online_payment_logo | image_url: width: 375 }} 375w,{%- endif -%}
+                {{ block.settings.online_payment_logo | image_url }} {{ block.settings.online_payment_logo.width }}w"
+                src="{{ block.settings.online_payment_logo | image_url: width: 600 }}"
+                alt="{{ block.settings.online_payment_logo.alt | default: shop.name }}"
+                loading="lazy"
+                width="{{ block.settings.online_payment_logo.width }}"
+                height="{{ block.settings.online_payment_logo.width | divided_by: block.settings.online_payment_logo.aspect_ratio | round }}"
+                class="w-auto object-fit-cover"
+            />
+          </picture>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Online Payments",
+  "tag": "section",
+  "class": "m-online-payments",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SECTION TITLE SETTINGS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Online payments that work with your store"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Heading Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "SECTION DESCRIPTION SETTINGS"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Integrate seamless payment experiences by connecting directly with your storefront</p>"
+    },
+    {
+      "type": "header",
+      "content": "SECTION SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 104
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 54
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "header",
+          "content": "LOGO SETTINGS"
+        },
+        {
+          "type": "image_picker",
+          "id": "online_payment_logo",
+          "label": "Logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Online Payments"
+    }
+  ]
+}
+{% endschema %}

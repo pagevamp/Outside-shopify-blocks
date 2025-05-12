@@ -1,0 +1,11 @@
+/* Hide the select box */
+.select-to-check {
+  // display: none;
+}
+
+/* Style the checkbox container if needed */
+#checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

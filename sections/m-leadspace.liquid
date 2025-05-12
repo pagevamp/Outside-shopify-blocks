@@ -1,0 +1,729 @@
+{{ 'ni_leadspace.min.css' | asset_url | stylesheet_tag }}
+{% liquid assign pricing_card = section.blocks | where : "type", "pricing_card" %}
+{% style %}
+  #shopify-section-{{ section.id }} .m-leadspace__container > .container {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-leadspace__container > .container {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-leadspace__container > .container {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {%- when 'leadspace_content' -%}
+        @media(min-width:1200px) {
+          #shopify-section-{{ section.id }} .m-leadspace__content {
+            margin-top: {{ block.settings.content_top_spacing_desktop | times: 0.0625 }}rem;
+          }  
+        }
+        #shopify-section-{{ section.id }} .m-leadspace__heading {
+          color: {{ block.settings.title_color }}
+        }
+        #shopify-section-{{ section.id }} .m-leadspace__description {
+          color: {{ block.settings.description_color }}
+        }
+      {%- when 'leadspace_image' -%}
+
+      #shopify-section-{{ section.id }} .m-leadspace__picture img {
+        aspect-ratio: {{ block.settings.image_desktop_ratio }};
+      }
+    {% endcase %}
+  {%- endfor -%}
+  {% if section.settings.shadow_image %}
+    .m-leadspace__picture {
+      margin-left: -9%;
+    }
+    @media(min-width:990px) {
+      .m-leadspace__picture {
+        margin-left: -16%;
+      }
+    }
+
+    @media(min-width:1200px) {
+    .m-leadspace__picture {
+        margin-left: -9%;
+      }
+    }
+  {% endif %}
+  .m-leadspace__buttons {
+    width: 100%
+  }
+  @media(min-width:990px) {
+    .m-leadspace__buttons {
+      width: calc(100% + 20px) !important
+      }
+    }
+    {% if section.settings.leadspace_type == 'full_bleed_desktop' %}
+      .m-leadspace__background img {
+        object-position: right;
+      }
+      @media(min-width:500px) and (max-width:989px) {
+
+      .m-leadspace__background img {
+            aspect-ratio: 1;
+            object-position: right 60%;
+        }
+      }
+    {% endif %}
+    {% if section.settings.background_class == "bg-gradient-payment" %}
+      #shopify-section-{{ section.id }} .m-leadspace__wrapper:before {
+        display: block;
+      }
+    {% endif %}
+    {% unless pricing_card.size > 0 %}
+      .m-leadspace__buttons .btn.btn-secondary {
+        @media (min-width:1025px) {
+          min-width: 16.1rem;
+        }
+      }
+    {% endunless %}
+{% endstyle %}
+<div class="m-leadspace__wrapper d-grid {{ section.settings.background_class }}">
+  {% if section.settings.leadspace_type == 'full_bleed_desktop' %}
+    <div class="m-leadspace__background">
+      {% liquid assign leadspace_image = section.blocks | where : "type", "leadspace_image" %}
+        {%- for block in leadspace_image -%}
+          {%- if block.settings.image_mobile != blank or block.settings.image_desktop != blank -%}
+            <picture class="c-picture h-100 w-100">
+              {%- if block.settings.image_mobile != blank -%}
+                <source srcset="
+                  {%- if block.settings.image_mobile.width >= 375 -%}{{ block.settings.image_mobile | image_url: width: 375 }} 375w,{%- endif -%}
+                  {%- if block.settings.image_mobile.width >= 550 -%}{{ block.settings.image_mobile | image_url: width: 550 }} 550w,{%- endif -%}
+                  {%- if block.settings.image_mobile.width >= 750 -%}{{ block.settings.image_mobile | image_url: width: 750 }} 750w,{%- endif -%}
+                  {%- if block.settings.image_mobile.width >= 1100 -%}{{ block.settings.image_mobile | image_url: width: 1100 }} 1100w,{%- endif -%}
+                  {%- if block.settings.image_mobile.width >= 1500 -%}{{ block.settings.image_mobile | image_url: width: 1500 }} 1500w,{%- endif -%}
+                  {{ block.settings.image_mobile | image_url }} {{ block.settings.image_mobile.width }}w"
+                  media="(max-width: 989px)">
+              {%- endif -%}
+
+              {%- if block.settings.image_tablet != blank -%}
+                <source srcset="
+                  {%- if block.settings.image_tablet.width >= 990 -%}{{ block.settings.image_tablet | image_url: width: 768 }} 768w,{%- endif -%}
+                  {%- if block.settings.image_tablet.width >= 1024 -%}{{ block.settings.image_tablet | image_url: width: 1024 }} 1024w,{%- endif -%}
+                  {{ block.settings.image_tablet | image_url }} {{ block.settings.image_tablet.width }}w"
+                  media="(min-width: 990px) and (max-width: 1024px)">
+              {%- endif -%}
+
+              <source srcset="
+                {%- if block.settings.image_desktop.width >= 375 -%}{{ block.settings.image_desktop | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if block.settings.image_desktop.width >= 550 -%}{{ block.settings.image_desktop | image_url: width: 550 }} 550w,{%- endif -%}
+                {%- if block.settings.image_desktop.width >= 750 -%}{{ block.settings.image_desktop | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if block.settings.image_desktop.width >= 1100 -%}{{ block.settings.image_desktop | image_url: width: 1100 }} 1100w,{%- endif -%}
+                {%- if block.settings.image_desktop.width >= 1500 -%}{{ block.settings.image_desktop | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {%- if block.settings.image_desktop.width >= 1780 -%}{{ block.settings.image_desktop | image_url: width: 1780 }} 1780w,{%- endif -%}
+                {{ block.settings.image_desktop | image_url }}{{ block.settings.image_desktop.width }}w"
+                media="(min-width: 1025px)">
+
+              <img
+                srcset="
+                  {%- if block.settings.image_desktop.width >= 375 -%}{{ block.settings.image_desktop | image_url: width: 375 }} 375w,{%- endif -%}
+                  {%- if block.settings.image_desktop.width >= 550 -%}{{ block.settings.image_desktop | image_url: width: 550 }} 550w,{%- endif -%}
+                  {%- if block.settings.image_desktop.width >= 750 -%}{{ block.settings.image_desktop | image_url: width: 750 }} 750w,{%- endif -%}
+                  {%- if block.settings.image_desktop.width >= 1100 -%}{{ block.settings.image_desktop | image_url: width: 1100 }} 1100w,{%- endif -%}
+                  {%- if block.settings.image_desktop.width >= 1500 -%}{{ block.settings.image_desktop | image_url: width: 1500 }} 1500w,{%- endif -%}
+                  {%- if block.settings.image_desktop.width >= 1780 -%}{{ block.settings.image_desktop | image_url: width: 1780 }} 1780w,{%- endif -%}
+                  {{ block.settings.image_desktop | image_url }} {{ block.settings.image_desktop.width }}w"
+                src="{{ block.settings.image_desktop | image_url: width: 1780 }}"
+                alt="{{ block.settings.image_desktop.alt }}"
+                loading="lazy"
+                class="h-100 object-fit-cover d-block"
+                width="800"
+                height="480"
+              />
+            </picture>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
+  <div class="m-leadspace__container position-relative z-1">
+    <div class="container">
+      <div class="row {% if section.settings.shadow_image %}align-items-xl-center{% endif %}">
+        <div class="col-md-6 col-xl-5">
+          <div class="m-leadspace__content d-flex flex-column align-items-center d-md-block{% if section.settings.leadspace_type == 'full_bleed_desktop' %} me-lg-14{% else %} mb-10 mb-md-0 {% endif %} me-xl-n12">
+            {% liquid assign leadspace_content = section.blocks | where : "type", "leadspace_content" %}
+            {%- for block in leadspace_content -%}
+              {% if block.settings.eyebrow != blank %}
+                <p class="eyebrow eyebrow-with-line text-primary mb-4 {% if pricing_card.size > 0 %}mb-md-6 {% else %}mb-md-8{% endif %}">
+                  {{ block.settings.eyebrow }}
+                </p>
+              {% endif %}
+              <div class="text-center text-md-start px-md-0 {% if section.settings.leadspace_type == 'full_bleed_desktop' %}px-6 mb-8 mb-md-6{% elsif pricing_card.size > 0 %}px-5 mb-8{% else %}px-5 mb-6 mb-md-8{% endif %}">
+                {% if block.settings.heading != blank %}
+                  <{{ block.settings.title_tag }} class="m-leadspace__heading h1 mb-6 pe-lg-4 pe-xl-0">
+                    {{ block.settings.heading | newline_to_br }}
+                  </{{ block.settings.title_tag }}>
+                {% endif %}
+                {% if block.settings.description != blank %}
+                  <p class="m-leadspace__description text-body-primary">
+                    {{ block.settings.description }}
+                  </p>
+                {% endif %}
+              </div>
+              <div class="m-leadspace__buttons d-flex flex-column flex-md-row align-items-lg-center {% if block.settings.button_label_second != blank %}gap-4 gap-lg-2{% else %}gap-4{% endif %} justify-content-center justify-content-md-start px-3 px-md-0 me-lg-n3">
+                {%- if block.settings.button_label_first != blank -%}
+                  <a
+                    {% if block.settings.button_link_first == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_first }}"
+                    {% endif %}
+                    class="btn btn-{{ block.settings.button_style_first }}"
+                    target="{% if block.settings.link_first_new_tab %}_blank{% endif %}"
+                  >
+                    {{ block.settings.button_label_first | escape }}
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.button_label_second != blank -%}
+                  <a
+                    {% if block.settings.button_link_second == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_second }}"
+                    {% endif %}
+                    class="btn btn-{{ block.settings.button_style_second }}"
+                    target="{% if block.settings.link_second_new_tab %}_blank{% endif %}"
+                  >
+                    {{ block.settings.button_label_second | escape }}
+                  </a>
+                {%- else -%}
+                  {% if block.settings.section_sub_description != blank %}
+                    <div class="m-leadspace__sub-description m-0 text-small {{ block.settings.content_color_class }}">
+                      {{ block.settings.section_sub_description }}
+                    </div>
+                  {% endif %}
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        {% if section.settings.leadspace_type == 'fifty_fifty' %}
+          <div class="offset-xl-1 col-md-6">
+            {% comment %} Leadpace picture {% endcomment %}
+            {% liquid assign leadspace_image = section.blocks | where : "type", "leadspace_image" %}
+            {%- for block in leadspace_image -%}
+              {%- if block.settings.image_mobile != blank or block.settings.image_desktop != blank -%}
+                <div class="m-leadspace__picture">
+                  <picture class="c-picture h-100 w-100">
+                    {%- if block.settings.image_mobile != blank -%}
+                      <source srcset="
+                        {%- if block.settings.image_mobile.width >= 375 -%}{{ block.settings.image_mobile | image_url: width: 375 }} 375w,{%- endif -%}
+                        {%- if block.settings.image_mobile.width >= 550 -%}{{ block.settings.image_mobile | image_url: width: 550 }} 550w,{%- endif -%}
+                        {%- if block.settings.image_mobile.width >= 750 -%}{{ block.settings.image_mobile | image_url: width: 750 }} 750w,{%- endif -%}
+                        {%- if block.settings.image_mobile.width >= 1100 -%}{{ block.settings.image_mobile | image_url: width: 1100 }} 1100w,{%- endif -%}
+                        {%- if block.settings.image_mobile.width >= 1500 -%}{{ block.settings.image_mobile | image_url: width: 1500 }} 1500w,{%- endif -%}
+                        {{ block.settings.image_mobile | image_url }} {{ block.settings.image_mobile.width }}w"
+                        media="(max-width: 767px)">
+                    {%- endif -%}
+
+                    {%- if block.settings.image_tablet != blank -%}
+                      <source srcset="
+                        {%- if block.settings.image_tablet.width >= 990 -%}{{ block.settings.image_tablet | image_url: width: 768 }} 768w,{%- endif -%}
+                        {%- if block.settings.image_tablet.width >= 1024 -%}{{ block.settings.image_tablet | image_url: width: 1024 }} 1024w,{%- endif -%}
+                        {{ block.settings.image_tablet | image_url }} {{ block.settings.image_tablet.width }}w"
+                        media="(min-width: 768px) and (max-width: 1024px)">
+                    {%- endif -%}
+
+                    <source srcset="
+                      {%- if block.settings.image_desktop.width >= 375 -%}{{ block.settings.image_desktop | image_url: width: 375 }} 375w,{%- endif -%}
+                      {%- if block.settings.image_desktop.width >= 550 -%}{{ block.settings.image_desktop | image_url: width: 550 }} 550w,{%- endif -%}
+                      {%- if block.settings.image_desktop.width >= 750 -%}{{ block.settings.image_desktop | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if block.settings.image_desktop.width >= 1100 -%}{{ block.settings.image_desktop | image_url: width: 1100 }} 1100w,{%- endif -%}
+                      {%- if block.settings.image_desktop.width >= 1500 -%}{{ block.settings.image_desktop | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {%- if block.settings.image_desktop.width >= 1780 -%}{{ block.settings.image_desktop | image_url: width: 1780 }} 1780w,{%- endif -%}
+                      {{ block.settings.image_desktop | image_url }}{{ block.settings.image_desktop.width }}w"
+                      media="(min-width: 1025px)">
+
+                    <img
+                      srcset="
+                        {%- if block.settings.image_desktop.width >= 375 -%}{{ block.settings.image_desktop | image_url: width: 375 }} 375w,{%- endif -%}
+                        {%- if block.settings.image_desktop.width >= 550 -%}{{ block.settings.image_desktop | image_url: width: 550 }} 550w,{%- endif -%}
+                        {%- if block.settings.image_desktop.width >= 750 -%}{{ block.settings.image_desktop | image_url: width: 750 }} 750w,{%- endif -%}
+                        {%- if block.settings.image_desktop.width >= 1100 -%}{{ block.settings.image_desktop | image_url: width: 1100 }} 1100w,{%- endif -%}
+                        {%- if block.settings.image_desktop.width >= 1500 -%}{{ block.settings.image_desktop | image_url: width: 1500 }} 1500w,{%- endif -%}
+                        {%- if block.settings.image_desktop.width >= 1780 -%}{{ block.settings.image_desktop | image_url: width: 1780 }} 1780w,{%- endif -%}
+                        {{ block.settings.image_desktop | image_url }} {{ block.settings.image_desktop.width }}w"
+                      src="{{ block.settings.image_desktop | image_url: width: 1780 }}"
+                      alt="{{ block.settings.image_desktop.alt }}"
+                      loading="lazy"
+                      class="h-100 object-fit-cover d-block"
+                      width="800"
+                      height="480"
+                    />
+                  </picture>
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% comment %} End Leadpace picture {% endcomment %}
+            {% if pricing_card.size > 0 %}
+              <div class="m-leadspace__pricing-container mt-8 mt-lg-0 d-flex flex-column row-gap-4 row-gap-md-8">
+                {%- for block in pricing_card -%}
+                  {%- if block.settings.pricing_title or block.settings.pricing_description -%}
+                    <div class="m-leadspace__pricing py-10 px-7 pe-xl-8 bg-white position-relative overflow-hidden">  
+                      <div class="m-leadspace__pricing-theme position-absolute bottom-0 start-0 {{ block.settings.pricing_theme }}">
+
+                      </div>
+                      <div class="m-leadspace__pricing-wrapper d-md-grid column-gap-6 pe-7 pe-md-0">
+                        {% if block.settings.pricing_title != blank %}
+                          <h2 class="h4 m-leadspace__pricing-title mb-0 pe-xl-10 mb-5 mb-md-0 pe-lg-3 pe-xl-0">
+                            {{ block.settings.pricing_title }}
+                          </h2>
+                        {% endif %}
+                        {% if block.settings.pricing_description != blank %}
+                          <div class="text-body-primary m-leadspace__pricing-description me-lg-n3 me-xl-0 ms-xl-n6">
+                            {{ block.settings.pricing_description }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {% endif %} 
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Leadspace",
+    "tag": "section",
+    "class": "m-leadspace",
+    "settings": [
+      {
+        "type": "header",
+        "content": "LEADSPACE SETTINGS"
+      },
+      {
+        "type": "select",
+        "id": "leadspace_type",
+        "label": "Leadspace type",
+        "options": [
+          {
+            "value": "full_bleed_desktop",
+            "label": "Full Bleed Desktop"
+          },
+          {
+            "value": "fifty_fifty",
+            "label": "Fifty Fifty"
+          }
+        ],
+        "default": "fifty_fifty"
+      },
+      {
+        "type": "header",
+        "content": "SECTION BACKGROUND SETTINGS"
+      },
+      {
+        "type": "select",
+        "id": "background_class",
+        "label": "Background Color",
+        "options": [
+          {
+            "label": "Secondary Navy",
+            "value": "bg-secondary"
+          },
+          {
+            "label": "Primary Sapphire",
+            "value": "bg-primary"
+          },
+          {
+            "label": "White",
+            "value": "bg-white"
+          },
+          {
+            "label": "Primary Gradient",
+            "value": "bg-gradient-payment"
+          }
+        ],
+        "default": "bg-white"
+      },
+      {
+        "type": "header",
+        "content": "SECTION SPACING SETTINGS"
+      },
+      {
+        "type": "select",
+        "id": "section_spacing",
+        "label": "Section Spacing",
+        "options": [
+          {
+            "value": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
+            "label": "Spacing Type1 (Homepage)"
+          },
+          {
+            "value": "py-8 pt-lg-14 pb-lg-12 pb-xl-20",
+            "label": "Spacing Type2 (Ecomm)"
+          },
+          {
+            "value": "pt-11 pb-76 py-lg-21 pt-xl-33 pb-xl-40",
+            "label": "Spacing Type3 (About US)"
+          }
+        ],
+        "default": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44"
+      },
+      {
+        "type": "checkbox",
+        "id": "shadow_image",
+        "label": "Image with Shadow",
+        "info": "This will enable the margin required for image that have shadow",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "SPACING SETTINGS"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Desktop",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Desktop",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_top_tablet",
+        "min": 0,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Tablet",
+        "default": 98
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_tablet",
+        "min": 0,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Tablet",
+        "default": 86
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Mobile",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Mobile",
+        "default": 98
+      }
+    ],
+    "blocks": [
+      {
+        "type": "pricing_card",
+        "name": "PRICING Card",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "text",
+            "id": "pricing_title",
+            "label": "Pricing Title"
+          },
+          {
+            "type": "textarea",
+            "id": "pricing_description",
+            "label": "Pricing Description"
+          },
+          {
+            "type": "select",
+            "id": "pricing_theme",
+            "label": "Pricing Theme",
+            "options": [
+              {
+                "value": "bg-bold-amaranth",
+                "label": "Bold Amaranth"
+              },
+              {
+                "value": "bg-teal",
+                "label": "Teal"
+              },
+              {
+                "value": "bg-primary",
+                "label": "Sapphire"
+              },
+              {
+                "value": "bg-white",
+                "label": "White"
+              }
+            ],
+            "default": "bg-bold-amaranth"
+          }
+        ]
+      },
+      {
+        "type": "leadspace_content",
+        "name": "LEADSPACE CONTENT",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "eyebrow",
+            "label": "Eyebrow"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Payment solutions to help you grow your business"            
+          },
+          {
+            "type": "select",
+            "id": "title_tag",
+            "label": "Heading Tag",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              }
+            ],
+            "default": "h1"
+          },
+          {
+            "type": "select",
+            "id": "title_color",
+            "label": "Title Color",
+            "options": [
+              {
+                "value": "var(--navy)",
+                "label": "Secondary(Navy)"
+              },
+              {
+                "value": "var(--sapphire)",
+                "label": "Primary(sapphire)"
+              },
+              {
+                "value": "var(--white)",
+                "label": "White"
+              }
+            ],
+            "default": "var(--navy)"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Accept payments for as little as 2.25% per transaction."
+          },
+          {
+            "type": "select",
+            "id": "description_color",
+            "label": "Description Color",
+            "options": [
+              {
+                "value": "var(--navy)",
+                "label": "Secondary(Navy)"
+              },
+              {
+                "value": "var(--sapphire)",
+                "label": "Primary(sapphire)"
+              },
+              {
+                "value": "var(--white)",
+                "label": "White"
+              }
+            ],
+            "default": "var(--navy)"
+          },
+          {
+            "type": "header",
+            "content": "BUTTON SETTINGS"
+          },
+          {
+            "type": "text",
+            "id": "button_label_first",
+            "label": "Button Label First",
+            "default": "Find your solution"
+          },
+          {
+            "type": "url",
+            "id": "button_link_first",
+            "label": "Button Links First"
+          },
+          {
+            "type": "select",
+            "id": "button_style_first",
+            "label": "Button Style First",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "secondary-white",
+                "label": "Secondary White"
+              }
+            ],
+            "default": "primary"
+          },
+          {
+            "type": "checkbox",
+            "id": "link_first_new_tab",
+            "label": "Open First Link In New Tab ?",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "button_label_second",
+            "label": "Button Label Second"
+          },
+          {
+            "type": "url",
+            "id": "button_link_second",
+            "label": "Button Links Second"
+          },
+          {
+            "type": "select",
+            "id": "button_style_second",
+            "label": "Button Style Second",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "secondary-white",
+                "label": "Secondary White"
+              }
+            ],
+            "default": "primary"
+          },
+          {
+            "type": "checkbox",
+            "id": "link_second_new_tab",
+            "label": "Open Second Link In New Tab ?"
+          },
+          {
+            "type": "header",
+            "content": "CONTENT TOP SPACING"
+          },
+          {
+            "type": "range",
+            "id": "content_top_spacing_desktop",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Content Margin top",
+            "default": 82
+          }
+        ]
+      },
+      {
+        "name": "LEADSPACE IMAGE",
+        "type": "leadspace_image",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Desktop Image"
+          },
+          {
+            "type": "select",
+            "id": "image_desktop_ratio",
+            "label": "Image Ratio Desktop",
+            "options": [
+              {
+                "value": "80/37",
+                "label": "Small(80/37)"
+              },
+              {
+                "value": "81/56",
+                "label": "Medium(81/56)"
+              },
+              {
+                "value": "81/74",
+                "label": "large(81/74)"
+              }
+            ],
+            "default": "81/56"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_tablet",
+            "label": "Tablet Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Leadspace",
+        "blocks": [
+          {
+            "type": "leadspace_content"
+          },
+          {
+            "type": "leadspace_image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

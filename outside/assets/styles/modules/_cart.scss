@@ -1,0 +1,215 @@
+.#{$global} {
+  &-cart-drawer {
+    &__overlay {
+      background-color: $dark;
+      opacity: 0.3;
+    }
+
+    .cart-drawer {
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+
+    &-items {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  &-drawer {
+    &__inner {
+      height: 100%;
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        height: calc(100% - 125px);
+        width: rem(600);
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 100%;
+      }
+    }
+
+    &__close {
+      top: rem(-4);
+      right: rem(-28);
+
+      .svg-wrapper {
+        .icon-close {
+          width: rem(12);
+          height: rem(12);
+        }
+      }
+    }
+
+    &__footer {
+      margin-inline: rem(-32);
+      border-top: rem(1) solid $bold-mist;
+
+      .ni-cart__ctas {
+        .cart__checkout-button {
+
+          &::before,
+          &::after {
+            display: none;
+          }
+        }
+      }
+
+      &-totals {
+        &>* {
+          font-size: 0.875rem !important;
+          font-weight: $font-weight-medium;
+          line-height: 1.4 !important;
+          letter-spacing: -0.04em;
+
+          @include media-breakpoint-up(md) {
+            font-size: 1rem !important;
+            line-height: 1 !important;
+          }
+        }
+      }
+    }
+  }
+
+  &-cart-items {
+    .cart-item {
+      gap: 0;
+
+      &__media {
+        width: rem(105);
+        grid-row: 1 / 4;
+
+        @include media-breakpoint-up(md) {
+          width: rem(138);
+        }
+
+        .cart-item__image {
+          width: rem(105);
+          height: rem(107);
+          object-fit: cover;
+
+          @include media-breakpoint-up(md) {
+            width: rem(138);
+            height: rem(140);
+          }
+        }
+      }
+
+      &__details {
+        width: rem(180);
+
+        @include media-breakpoint-up(md) {
+          width: rem(200);
+        }
+      }
+
+      &__totals {
+        width: rem(190);
+
+        .cart-item__price-wrapper {
+          @media(min-width: 1100px) and (max-width: 1300px) {
+            display: flex;
+          }
+        }
+      }
+
+      &__quantity {
+        .quantity {
+
+          &::before,
+          &::after {
+            display: none;
+          }
+
+          &.cart-quantity {
+            width: rem(110);
+            min-height: auto;
+          }
+
+          &__button {
+            @extend .text-body-secondary,
+            .bg-cloud;
+            width: rem(32);
+            height: rem(32);
+            border-radius: rem(4);
+          }
+
+          &__input {
+            @extend .caption;
+            width: rem(40);
+            height: rem(32);
+            opacity: 1;
+          }
+        }
+
+        .cart-remove-button {
+          width: 32px;
+          height: 32px;
+          min-width: auto;
+          min-height: auto;
+
+          s .icon-remove {
+            width: rem(16);
+            height: rem(16);
+          }
+        }
+      }
+    }
+  }
+
+  &-cart-recommendation {
+    .ni-card-product {
+      border-radius: rem(8);
+      border: rem(1) solid $bold-mist;
+
+      .quick-add__submit {
+
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+
+      .ni-card__content-wrapper {
+        max-width: rem(208);
+
+        @include media-breakpoint-up(md) {
+          max-width: rem(305);
+        }
+
+        .card__heading {
+          a {
+
+            &::after {
+              pointer-events: none;
+            }
+          }
+        }
+
+        .quick-add__submit {
+          &.btn {
+            @include media-breakpoint-down(md) {
+              --bs-btn-padding-y: 1.0625rem;
+              min-height: auto;
+            }
+          }
+        }
+      }
+
+      .ni-card__inner-media {
+        border: rem(1) solid $bold-mist;
+        border-radius: rem(4);
+        width: rem(98);
+        height: rem(100);
+
+        @include media-breakpoint-up(md) {
+          width: rem(160);
+          height: rem(165);
+        }
+      }
+    }
+  }
+}

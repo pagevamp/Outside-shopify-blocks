@@ -1,0 +1,137 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "m_leadspace_8a4qRk": {
+      "type": "m-leadspace",
+      "blocks": {
+        "leadspace_content_dKYY9z": {
+          "type": "leadspace_content",
+          "settings": {
+            "eyebrow": "About us",
+            "heading": "Helping businesses in EMEA prosper",
+            "title_tag": "h1",
+            "title_color": "var(--navy)",
+            "description": "For over 30 years, Network International has delivered innovative payment solutions that drive profitability for our customers.",
+            "description_color": "var(--navy)",
+            "button_label_first": "Find out more",
+            "button_link_first": "https://www.network.ae/about-us/who-we-are",
+            "button_style_first": "primary",
+            "link_first_new_tab": true,
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "primary",
+            "link_second_new_tab": false,
+            "content_top_spacing_desktop": 0
+          }
+        },
+        "leadspace_image_K4fGMA": {
+          "type": "leadspace_image",
+          "settings": {
+            "image_desktop": "shopify://shop_images/hero-image-aboutus_2x_87895a68-0e98-4f6a-8115-89df55ad57f7.webp",
+            "image_desktop_ratio": "81/56",
+            "image_tablet": "shopify://shop_images/hero-image-aboutus-tablet_2x_91a62003-833c-44a8-914b-bc603265e5dd.webp",
+            "image_mobile": "shopify://shop_images/hero-image-aboutus-mobile_2x_3fa2958c-e4d9-4576-aa83-46f6c1174587.webp"
+          }
+        }
+      },
+      "block_order": [
+        "leadspace_content_dKYY9z",
+        "leadspace_image_K4fGMA"
+      ],
+      "settings": {
+        "leadspace_type": "full_bleed_desktop",
+        "background_class": "bg-white",
+        "section_spacing": "pt-11 pb-76 py-lg-21 pt-xl-33 pb-xl-40",
+        "shadow_image": true,
+        "padding_top_desktop": 134,
+        "padding_bottom_desktop": 160,
+        "padding_top_tablet": 86,
+        "padding_bottom_tablet": 86,
+        "padding_top_mobile": 44,
+        "padding_bottom_mobile": 150
+      }
+    },
+    "m_payment_ecosystem_mUne3X": {
+      "type": "m-payment-ecosystem",
+      "blocks": {
+        "feature_NMd33p": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/icon__money_square.svg",
+            "feature_title": "$59 billion in payment volume",
+            "feature_title_tag": "h4",
+            "feature_description": ""
+          }
+        },
+        "feature_gQFfkJ": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/icon__shop_alt.svg",
+            "feature_title": "130,000+ merchants",
+            "feature_title_tag": "h4",
+            "feature_description": ""
+          }
+        },
+        "feature_c6KN9B": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/icon__credit_card_2.svg",
+            "feature_title": "1.6 billion transactions",
+            "feature_title_tag": "h4",
+            "feature_description": ""
+          }
+        },
+        "feature_67H79a": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/icon__group.svg",
+            "feature_title": "18 million payment credentials",
+            "feature_title_tag": "h4",
+            "feature_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_NMd33p",
+        "feature_gQFfkJ",
+        "feature_c6KN9B",
+        "feature_67H79a"
+      ],
+      "name": "Payment Ecosystem",
+      "settings": {
+        "background_class": "bg-white",
+        "column_layout": "fifty-fifty",
+        "section_title": "Our impact",
+        "section_title_tag": "h2",
+        "section_description": "<p>We are the largest acquirer in the UAE, and the leading enabled of digital commerce in the Middle East and Africa. </p>",
+        "padding_top_desktop": 128,
+        "padding_bottom_desktop": 136,
+        "padding_top_tablet": 74,
+        "padding_bottom_tablet": 74,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 134
+      }
+    }
+  },
+  "order": [
+    "main",
+    "m_leadspace_8a4qRk",
+    "m_payment_ecosystem_mUne3X"
+  ]
+}

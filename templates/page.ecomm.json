@@ -1,0 +1,266 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "m_leadspace_MeCBMm": {
+      "type": "m-leadspace",
+      "blocks": {
+        "leadspace_content_GiDkmM": {
+          "type": "leadspace_content",
+          "settings": {
+            "eyebrow": "",
+            "heading": "Simplified payment solutions for digital stores and online businesses",
+            "title_tag": "h1",
+            "title_color": "var(--sapphire)",
+            "description": "Grow your business by providing a seamless checkout experience wherever your customers are.",
+            "description_color": "var(--navy)",
+            "button_label_first": "Buy now",
+            "button_link_first": "shopify://products/mobile-payment",
+            "button_style_first": "primary",
+            "link_first_new_tab": false,
+            "button_label_second": "Start testing instantly",
+            "button_link_second": "#",
+            "button_style_second": "secondary",
+            "link_second_new_tab": false,
+            "content_top_spacing_desktop": 82
+          }
+        },
+        "leadspace_image_Mqq4Gg": {
+          "type": "leadspace_image",
+          "settings": {
+            "image_desktop": "shopify://shop_images/hero-ecomm_2x_7795406d-dd9f-4f74-a2b8-654ee5f331dd.webp",
+            "image_desktop_ratio": "81/74",
+            "image_mobile": "shopify://shop_images/hero-image-ecomm-mb_2x_ed070f79-0450-4496-8bd0-0c58bec0e48f.webp"
+          }
+        }
+      },
+      "block_order": [
+        "leadspace_content_GiDkmM",
+        "leadspace_image_Mqq4Gg"
+      ],
+      "settings": {
+        "leadspace_type": "fifty_fifty",
+        "background_class": "bg-white",
+        "section_spacing": "py-8 pt-lg-14 pb-lg-12 pb-xl-20",
+        "shadow_image": false,
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 80,
+        "padding_top_tablet": 40,
+        "padding_bottom_tablet": 40,
+        "padding_top_mobile": 42,
+        "padding_bottom_mobile": 42
+      }
+    },
+    "m_ecomm_features_QVVJGi": {
+      "type": "m-ecomm-features",
+      "blocks": {
+        "ecomm_feature_CyFRzE": {
+          "type": "ecomm_feature",
+          "settings": {
+            "feature_image": "shopify://shop_images/Time_Circle.svg",
+            "feature_title": "Flexible payment options",
+            "feature_title_tag": "h4",
+            "feature_description": "<p>Accept leading credit cards and alternative payment methods.</p>"
+          }
+        },
+        "ecomm_feature_qe4Cj3": {
+          "type": "ecomm_feature",
+          "settings": {
+            "feature_image": "shopify://shop_images/Link_2.svg",
+            "feature_title": "Secure transactions anywhere",
+            "feature_title_tag": "h4",
+            "feature_description": "<p>Use payment links to accept payments securely from anywhere.</p>"
+          }
+        },
+        "ecomm_feature_3rzPca": {
+          "type": "ecomm_feature",
+          "settings": {
+            "feature_image": "shopify://shop_images/Layers.svg",
+            "feature_title": "Simplified payment management",
+            "feature_title_tag": "h4",
+            "feature_description": "<p>Track and manage payments with an easy-to-use payment portal.</p>"
+          }
+        },
+        "ecomm_feature_7fEMWV": {
+          "type": "ecomm_feature",
+          "settings": {
+            "feature_image": "shopify://shop_images/Share.svg",
+            "feature_title": "Flexible integration options",
+            "feature_title_tag": "h4",
+            "feature_description": "<p>Work with hosted payment pages, Web SDK, Direct API, Mobile SDKs (iOS and Android)</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ecomm_feature_CyFRzE",
+        "ecomm_feature_qe4Cj3",
+        "ecomm_feature_3rzPca",
+        "ecomm_feature_7fEMWV"
+      ],
+      "name": "Ecomm Features",
+      "settings": {
+        "section_title": "Over 30% of online shoppers abandon their carts due to poor checkout experiences. With N-Genius Online, you can transform online shopping into a simple and easy process.",
+        "section_title_tag": "h2",
+        "padding_top_desktop": 104,
+        "padding_bottom_desktop": 172,
+        "padding_top_tablet": 104,
+        "padding_bottom_tablet": 68,
+        "padding_top_mobile": 82,
+        "padding_bottom_mobile": 108
+      }
+    },
+    "m_steps_BMaMpk": {
+      "type": "m-steps",
+      "blocks": {
+        "step_LAzV4j": {
+          "type": "step",
+          "settings": {
+            "card_background_class": "bg-transparent",
+            "step_card_image": "shopify://shop_images/Text.png",
+            "step_card_title": "Generate a payment link",
+            "step_card_title_tag": "h4",
+            "step_card_title_size": "h4",
+            "step_card_description": ""
+          }
+        },
+        "step_ceVaNM": {
+          "type": "step",
+          "settings": {
+            "card_background_class": "bg-transparent",
+            "step_card_image": "shopify://shop_images/Group_2087325886.png",
+            "step_card_title": "Share it via social share or through messaging platforms",
+            "step_card_title_tag": "h4",
+            "step_card_title_size": "h4",
+            "step_card_description": ""
+          }
+        },
+        "step_ihtaft": {
+          "type": "step",
+          "settings": {
+            "card_background_class": "bg-transparent",
+            "step_card_image": "shopify://shop_images/image_1.png",
+            "step_card_title": "Accept secure payments from anywhere",
+            "step_card_title_tag": "h4",
+            "step_card_title_size": "h4",
+            "step_card_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_LAzV4j",
+        "step_ceVaNM",
+        "step_ihtaft"
+      ],
+      "settings": {
+        "background_class": "bg-secondary",
+        "heading": "Accept multiple payments with a single link",
+        "title_tag": "h2",
+        "title_size": "h2",
+        "description": "<p>Grow your online business by creating and sharing payment links directly with your customers.</p>",
+        "card_spacing_desktop": 16,
+        "card_spacing_mobile": 72,
+        "padding_top_desktop": 204,
+        "padding_bottom_desktop": 204,
+        "padding_top_tablet": 120,
+        "padding_bottom_tablet": 70,
+        "padding_top_mobile": 128,
+        "padding_bottom_mobile": 128
+      }
+    },
+    "m_online_payments_E6r86L": {
+      "type": "m-online-payments",
+      "blocks": {
+        "logo_EpjLzE": {
+          "type": "logo",
+          "settings": {
+            "online_payment_logo": "shopify://shop_images/Logos.png"
+          }
+        },
+        "logo_7QYmyq": {
+          "type": "logo",
+          "settings": {
+            "online_payment_logo": "shopify://shop_images/WooCommerce_logo_svg.png"
+          }
+        },
+        "logo_j7PUT6": {
+          "type": "logo",
+          "settings": {
+            "online_payment_logo": "shopify://shop_images/d8f2343dd73b42d1d7ef11ae4a562088_1.png"
+          }
+        },
+        "logo_eDK4pW": {
+          "type": "logo",
+          "settings": {
+            "online_payment_logo": "shopify://shop_images/opencart-logo_1.png"
+          }
+        },
+        "logo_Vmkrzd": {
+          "type": "logo",
+          "settings": {
+            "online_payment_logo": "shopify://shop_images/PrestaShop_Logo-700x114_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_EpjLzE",
+        "logo_7QYmyq",
+        "logo_j7PUT6",
+        "logo_eDK4pW",
+        "logo_Vmkrzd"
+      ],
+      "name": "Online Payments",
+      "settings": {
+        "heading": "Online payments that work with your store",
+        "title_tag": "h2",
+        "description": "<p>Integrate seamless payment experiences by connecting directly with your storefront</p>",
+        "padding_top_desktop": 90,
+        "padding_bottom_desktop": 92,
+        "padding_top_tablet": 90,
+        "padding_bottom_tablet": 96,
+        "padding_top_mobile": 104,
+        "padding_bottom_mobile": 70
+      }
+    },
+    "m_fifty_fifty_yeQDWU": {
+      "type": "m-fifty-fifty",
+      "name": "Fifty Fifty",
+      "settings": {
+        "heading": "Transform your online store today",
+        "title_tag": "h2",
+        "button_label": "Buy now",
+        "button_link": "/",
+        "button_style": "secondary",
+        "image": "shopify://shop_images/client-transform-online_2x_f41cb51d-20cd-4a33-bb97-170d37755d5e.webp",
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 48,
+        "padding_top_tablet": 92,
+        "padding_bottom_tablet": 102,
+        "padding_top_mobile": 104,
+        "padding_bottom_mobile": 138
+      }
+    }
+  },
+  "order": [
+    "main",
+    "m_leadspace_MeCBMm",
+    "m_ecomm_features_QVVJGi",
+    "m_steps_BMaMpk",
+    "m_online_payments_E6r86L",
+    "m_fifty_fifty_yeQDWU"
+  ]
+}

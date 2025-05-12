@@ -1,0 +1,143 @@
+{% style %}
+  .m-chat-launcher__wrapper {
+    position: fixed;
+    z-index: {{ section.settings.zIndex }};
+    {% if section.settings.launcher_position == 'bottom-left' %}
+      bottom: 3.125rem;
+      left: 1.875rem;
+    {% elsif section.settings.launcher_position == 'bottom-right' %}
+      bottom: 3.125rem;
+      right: 1.875rem;
+    {% endif %}
+    opacity: 1;
+    will-change: opacity;
+    transition: 0.3s ease-in-out opacity;
+  }
+
+  .m-chat-launcher .btn {
+    box-shadow: 0px 6px 18px rgba(17, 30, 45, 0.22);
+  }
+
+  .m-chat-launcher__msg-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+  }
+  .m-chat-launcher__wrapper.chat-at-footer {
+    opacity: 0;
+    pointer-events: none;
+    z-index; -1;
+  }
+{% endstyle %}
+  {% liquid 
+        
+    if section.settings.launcher_theme == 'primary'
+      assign bg_color = 'primary'
+    elsif section.settings.launcher_theme == 'tertiary'
+      assign bg_color = 'secondary'
+    endif
+  %}
+<div class="m-chat-launcher__wrapper d-flex column-gap-1" id="m-chat-launcher">
+  <a href="" class="d-flex column-gap-1">
+    <div class="btn btn-{{ section.settings.launcher_theme }} btn-tertiary-no-hover d-none d-md-block">
+      <span class="caption mb-0">{{ section.settings.text }}</span>
+    </div>
+    <div class="m-chat-launcher__msg-btn d-flex align-items-center justify-content-center bg-{{ bg_color }} text-white">
+      {% render 'icon-list', svg: 'message' %}
+    </div>
+  </a>
+</div>
+<script>
+  {% if section.settings.hide_on_footer %}
+    document.addEventListener('DOMContentLoaded', function () {
+      stickyChatLauncher() // NI Sticky chat launcher
+    });
+    function stickyChatLauncher() {
+      var socialFloat = document.querySelector('#m-chat-launcher');
+      var footer = document.querySelector('#ni-footer');
+      
+      function getRectTop(el) {
+        var rect = el.getBoundingClientRect();
+        return rect.top;
+      }
+      
+      function checkOffset() {
+        var socialFloatBottom = getRectTop(socialFloat) + window.scrollY + socialFloat.offsetHeight;
+        var footerTop = getRectTop(footer) + window.scrollY;
+
+        if (socialFloatBottom >= footerTop - 10) {
+          socialFloat.classList.add('chat-at-footer');
+        } else {
+          socialFloat.classList.remove('chat-at-footer');
+        }
+      }
+
+      document.addEventListener("scroll", checkOffset);
+    }
+  {% endif %}
+</script>
+{% schema %}
+  {
+    "name": "Chat Launcher",
+    "class": "m-chat-launcher",
+    "settings": [
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Need help? Let's chat"
+      },
+      {
+        "type": "select",
+        "id": "launcher_theme",
+        "label": "Launcher Theme",
+        "options": [
+          {
+            "label": "Primary Sapphire",
+            "value": "primary"
+          },
+          {
+            "label": "Secondary Navy",
+            "value": "tertiary"
+          }
+        ],
+        "default": "tertiary"
+      },
+      {
+        "type": "select",
+        "id": "launcher_position",
+        "label": "Launcher Position",
+        "options": [
+          {
+            "label": "Bottom Left",
+            "value": "bottom-left"
+          },
+          {
+            "label": "Bottom Right",
+            "value": "bottom-right"
+          }
+        ],
+        "default": "bottom-right"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_on_footer",
+        "label": "Hide Chat Launcher On Footer",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "zIndex",
+        "min": 0,
+        "max": 20,
+        "label": "Chat Launcher Z-index",
+        "default": 9
+      }
+    ],
+    "presets": [
+      {
+        "name": "Chat Launcher"
+      }
+    ]
+  }
+{% endschema %}

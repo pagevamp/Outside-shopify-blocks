@@ -1,0 +1,331 @@
+{{ 'ni_payment_ecosystem.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-payment-ecosystem {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-payment-ecosystem {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-payment-ecosystem {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="m-payment-ecosystem m-payment-ecosystem--{{ section.settings.column_layout }} {{ section.settings.background_class }}">
+  <div class="container">
+    <div class="row row-gap-18">
+      <div class="col-12 {% if section.settings.column_layout == 'one-third-by-two-thirds' %}col-md-4{% else %}col-md-6{% endif %}">
+        <div class="m-payment-ecosystem__content d-flex flex-column gap-4 gap-md-6">
+          {% if section.settings.section_title != blank %}
+            <{{ section.settings.section_title_tag }} class="m-payment-ecosystem__title h2 mb-0 {% if section.settings.background_class == 'bg-white' %}{% if section.settings.column_layout == 'one-third-by-two-thirds' %}text-bold-sapphire{% else %}text-secondary{% endif %}{% else %}text-white{% endif %}">
+              {{ section.settings.section_title | newline_to_br }}
+            </{{ section.settings.section_title_tag }}>
+          {% endif %}
+
+          {% if section.settings.section_description != blank %}
+            <div class="m-payment-ecosystem__description text-body-primary {% if section.settings.background_class == 'bg-white' %}text-black{% else %}text-white{% endif %}">
+              {{ section.settings.section_description | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-12 {% if section.settings.column_layout == 'one-third-by-two-thirds' %}col-md-8{% else %}col-md-6{% endif %}">
+        <div class="row m-payment-ecosystem__row-gap">
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+              {%- when 'feature' -%}
+                <div class="col-12 col-md-6">
+                  <div class="m-payment-ecosystem__feature d-flex flex-column">
+                    {% if block.settings.feature_icon != blank %}
+                      <picture class="m-payment-ecosystem__feature-picture d-block">
+                        <img
+                          srcset="
+                            {%- if block.settings.feature_icon.width >= 375 -%}{{ block.settings.feature_icon | image_url: width: 375 }} 375w,{%- endif -%}
+                            {%- if block.settings.feature_icon.width >= 550 -%}{{ block.settings.feature_icon | image_url: width: 550 }} 550w,{%- endif -%}
+                            {%- if block.settings.feature_icon.width >= 750 -%}{{ block.settings.feature_icon | image_url: width: 750 }} 750w,{%- endif -%}
+                            {{ block.settings.feature_icon | image_url }} {{ block.settings.feature_icon.width }}w
+                          "
+                          src="{{ block.settings.feature_icon | image_url: width: 600 }}"
+                          alt="{{ block.settings.feature_icon.alt | default: shop.name }}"
+                          loading="lazy"
+                          data-src="{{ block.settings.feature_icon | image_url }}"
+                          data-widths="[540, 720]"
+                          data-aspectratio="{{ block.settings.feature_icon.aspect_ratio }}"
+                          data-sizes="auto"
+                          data-parent-fit="cover"
+                          width="{{ block.settings.feature_icon.width }}"
+                          height="{{ block.settings.feature_icon.width | divided_by: block.settings.feature_icon.aspect_ratio | round }}"
+                          class="h-auto w-100 object-fit-cover"
+                        >
+                      </picture>
+                    {% endif %}
+
+                    <div class="m-payment-ecosystem__feature-content d-flex flex-column {% if section.settings.background_class == 'bg-white' %}text-socondary{% else %}text-white{% endif %}">
+                      {% if block.settings.feature_title != blank %}
+                        <{{ block.settings.feature_title_tag }} class="m-payment-ecosystem__feature-title h4 m-0">
+                          {{ block.settings.feature_title | newline_to_br }}
+                        </{{ block.settings.feature_title_tag }}>
+                      {% endif %}
+
+                      {% if block.settings.feature_description != blank %}
+                        <div class="m-payment-ecosystem__feature-description text-body-primary">
+                          {{ block.settings.feature_description | newline_to_br }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+            {%- endcase -%}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Payment Ecosystem",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SECTION BACKGROUND SETTINGS"
+    },
+    {
+      "type": "select",
+      "id": "background_class",
+      "label": "Background Color",
+      "options": [
+        {
+          "label": "Secondary Navy",
+          "value": "bg-secondary"
+        },
+        {
+          "label": "Primary Sapphire",
+          "value": "bg-primary"
+        },
+        {
+          "label": "White",
+          "value": "bg-white"
+        }
+      ],
+      "default": "bg-white"
+    },
+    {
+      "type": "header",
+      "content": "COLUMN LAYOUT SETTINGS"
+    },
+    {
+      "type": "select",
+      "id": "column_layout",
+      "label": "Column Layout",
+      "options": [
+        {
+          "label": "One-Third / Two-Thirds",
+          "value": "one-third-by-two-thirds"
+        },
+        {
+          "label": "Fifty Fifty",
+          "value": "fifty-fifty"
+        }
+      ],
+      "default": "one-third-by-two-thirds"
+    },
+    {
+      "type": "header",
+      "content": "SECTION TITLE SETTINGS"
+    },
+    {
+      "type": "textarea",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Complete Payment Ecosystem"
+    },
+    {
+      "type": "select",
+      "id": "section_title_tag",
+      "label": "Heading Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "SECTION DESCRIPTION SETTINGS"
+    },
+    {
+      "type": "richtext",
+      "id": "section_description",
+      "label": "Section Description"
+    },
+    {
+      "type": "header",
+      "content": "SECTION SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 162
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 136
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "24/7 Local Support"
+        },
+        {
+          "type": "select",
+          "id": "feature_title_tag",
+          "label": "Feature Heading Tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            }
+          ],
+          "default": "h4"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "<ul><li>Support available by email, phone, or chat</li><li>Technical support</li><li>Comprehensive knowledge base</li></ul>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Payment Ecosystem",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

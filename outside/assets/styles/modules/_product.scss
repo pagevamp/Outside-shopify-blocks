@@ -1,0 +1,263 @@
+.#{$global} {
+  &-product {
+    &__info {
+      &-wrapper {
+        .ni-price {
+          &.price {
+            @extend .h5;
+          }
+        }
+      }
+    }
+
+    &__media {
+      &-wrapper {
+        .#{$global} {
+          &-swiper {
+            .product-media-container {
+              border-radius: rem(16);
+              aspect-ratio: 52/53;
+
+              @include media-breakpoint-up(md) {
+                aspect-ratio: 336 / 341;
+              }
+            }
+
+            .swiper-slide {
+              aspect-ratio: 336 / 341;
+            }
+
+            .swiper-pagination {
+              bottom: rem(16);
+              left: rem(-10);
+
+              .swiper-pagination-bullet {
+                border: rem(1) solid $navy;
+                background-color: transparent;
+                margin: rem(0, 2);
+                opacity: 1;
+
+                &.swiper-pagination-bullet-active {
+                  background-color: $navy;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__description {
+      ol {
+        padding: 1rem 1.375rem 1rem 0.875rem;
+        background-color: rgba($gray-300, .32);
+        list-style: none;
+        @extend .small-caption;
+        margin-bottom: rem(32);
+
+        @include media-breakpoint-up(md) {
+          margin-bottom: rem(16);
+        }
+
+        li {
+          position: relative;
+          padding-left: 1.3125rem;
+
+          &:before {
+            content: "";
+            background-image: url("data:image/svg+xml,%3Csvg width='7' height='7' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.67051 3.17676L5.97656 3.17676' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.82324 1.02354L3.82324 5.32959' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            position: absolute;
+            left: 0.188rem;
+            top: 0.313rem;
+            width: 0.4375rem;
+            height: 0.4375rem;
+            z-index: 1;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.063rem;
+            width: 0.875rem;
+            height: 0.875rem;
+            background-color: $navy;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      p {
+        @extend .text-body-primary;
+        margin-bottom: rem(30);
+
+        @include media-breakpoint-up(lg) {
+          margin-bottom: rem(20);
+        }
+
+        @include media-breakpoint-up(xl) {
+          margin-bottom: rem(32);
+        }
+      }
+
+      ul {
+        margin-left: 0.5rem;
+
+        li {
+          @extend .big-caption;
+          list-style: disc;
+          margin-bottom: rem(8);
+          padding-left: 0;
+
+          &::marker {
+            color: $navy;
+          }
+        }
+      }
+    }
+
+    .icon-with-text {
+      &__item {
+        position: relative;
+
+        img {
+          width: rem(40);
+          height: rem(40);
+          aspect-ratio: 1/1;
+          margin-bottom: rem(8);
+
+          @include media-breakpoint-up(lg) {
+            margin-bottom: rem(16);
+          }
+        }
+
+        &:not(:first-child) {
+
+          &:before {
+            content: "";
+            position: absolute;
+            left: rem(-12);
+            top: 0;
+            height: rem(94);
+            width: rem(0.75);
+            background-color: $bold-mist;
+
+            @include media-breakpoint-up(xl) {
+              left: rem(-24);
+              top: rem(-10);
+            }
+          }
+        }
+      }
+
+      &--horizontal {
+        column-gap: rem(28);
+
+        @include media-breakpoint-up(xl) {
+          column-gap: rem(48);
+        }
+      }
+    }
+
+    &-collapsible-accordion {
+      .accordion {
+
+        &-item {
+
+          border-top: rem(1) solid $bold-mist;
+
+          &:not(:first-of-type) {
+            border-top: rem(1) solid $bold-mist;
+          }
+        }
+
+        &__title {
+          min-height: rem(19);
+        }
+
+        &-button {
+          &:after {
+            width: rem(21);
+            height: rem(12);
+            background-image: url("data:image/svg+xml,%3Csvg width='23' height='13' viewBox='0 0 23 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.9141 9.17836L3.47296 1.09799C2.94912 0.596534 2.09981 0.596534 1.57597 1.09799C1.05213 1.59944 1.05213 2.41245 1.57597 2.9139L10.9656 11.9022C11.4894 12.4037 12.3387 12.4037 12.8625 11.9022L22.2521 2.9139C22.776 2.41245 22.776 1.59944 22.2521 1.09799C21.7283 0.596534 20.879 0.596534 20.3552 1.09799L11.9141 9.17836Z' fill='%23036AB1' stroke='%23036AB1' stroke-width='0.412729'/%3E%3C/svg%3E%0A");
+          }
+
+          &:not(.collapsed) {
+            &:after {
+              transform: rotate(180deg);
+            }
+          }
+
+        }
+
+        &-body {
+
+          h6,
+          strong {
+            @extend .text-button;
+
+            &:not(:last-child) {
+              margin-bottom: rem(16);
+            }
+          }
+
+          p {
+            @extend .text-body-primary;
+
+            &:not(:last-child) {
+              margin-bottom: rem(40);
+            }
+
+            &:has(strong) {
+              &:not(:last-child) {
+                margin-bottom: rem(16);
+              }
+            }
+          }
+
+          ul {
+            margin-left: 0.5rem;
+
+            li {
+              list-style: disc;
+              margin-bottom: rem(12);
+
+              &::marker {
+                color: $navy;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-form__submit {
+      .loading__spinner {
+        right: 15%;
+
+        svg {
+          width: 1rem;
+
+          circle {
+            stroke: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &-quick-add {
+    .ni-form-group {
+
+      .ni-form-check [type=radio]:checked+label:before,
+      .ni-form-check [type=radio]:not(:checked)+label:before {
+        top: 0.75rem;
+      }
+
+      .ni-form-check [type=radio]:checked+label:after,
+      .ni-form-check [type=radio]:not(:checked)+label:after {
+        top: 1rem;
+      }
+    }
+  }
+}

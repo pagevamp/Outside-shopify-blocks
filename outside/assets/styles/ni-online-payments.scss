@@ -1,0 +1,31 @@
+@import './common';
+
+.m-online-payments {
+  &__description {
+    max-width: 63.875rem;
+    margin: 0 auto;
+  }
+  
+  &__logos {
+    &:not(:has(.m-online-payments__picture)) {
+      display: none !important;
+    }
+  }
+  
+  &__logos {
+    max-width: 12.1rem;
+    margin: 0 auto;
+  
+    @include media-breakpoint-up(sm) {
+      max-width: 100%;
+    }
+  }
+  
+  &__picture img {
+    height: 2.125rem;
+
+    @include media-breakpoint-up(md) {
+      height: 3rem;
+    }
+  }
+}

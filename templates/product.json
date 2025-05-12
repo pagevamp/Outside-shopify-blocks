@@ -1,0 +1,243 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text_UcM48C": {
+          "type": "icon-with-text",
+          "settings": {
+            "is_dynamic_icons": true,
+            "layout": "horizontal",
+            "heading_1": "Heading",
+            "link_1": "",
+            "heading_2": "Heading",
+            "link_2": "",
+            "heading_3": "Heading",
+            "link_3": ""
+          }
+        },
+        "text_NWhx7x": {
+          "type": "text",
+          "settings": {
+            "text": "Built locally for businesses across the Middle East and Africa, N-Genius Online provides a complete e-commerce payment gateway with flexible integration options and 24/7 local support."
+          }
+        },
+        "collapsible_tab_Vhh6YX": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Key features",
+            "content": "{{ product.metafields.custom.key_features | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_8XUbyB": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Capabilities",
+            "content": "{{ product.metafields.custom.capabilities | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_Kqpne6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Packaging",
+            "content": "<p>{{ product.metafields.custom.packaging | metafield_tag }}</p>"
+          }
+        },
+        "collapsible_tab_U7imRP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Integrations",
+            "content": "{{ product.metafields.custom.integrations | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_f4xaG7": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Device compatability",
+            "content": "{{ product.metafields.custom.device_compatability | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_YTEpbD": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Delivery & Returns",
+            "content": "{{ product.metafields.custom.delivery_returns | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_UpPRzb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "FAQ",
+            "content": "{{ product.metafields.custom.product_faq | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "icon_with_text_UcM48C",
+        "text_NWhx7x",
+        "collapsible_tab_Vhh6YX",
+        "collapsible_tab_8XUbyB",
+        "collapsible_tab_Kqpne6",
+        "collapsible_tab_U7imRP",
+        "collapsible_tab_f4xaG7",
+        "collapsible_tab_YTEpbD",
+        "collapsible_tab_UpPRzb"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "ni_carousel",
+        "is_autoplay": true,
+        "is_loop": false,
+        "slider_speed": 4,
+        "slider_background": "--light-blue",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_top_tablet": 36,
+        "padding_bottom_tablet": 62,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 72
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "m_features_FpzP8Y": {
+      "type": "m-features",
+      "blocks": {
+        "key_features_8mM9xH": {
+          "type": "key_features",
+          "repeater": "{{ product.metafields.custom.product_key_features.value }}",
+          "settings": {
+            "feature_title": "{{ block.repeater.title.value }}",
+            "feature_description": "<p>{{ block.repeater.description | metafield_tag }}</p>",
+            "feature_image": "{{ block.repeater.image.value }}",
+            "feature_image_mobile": "{{ block.repeater.image_mobile.value }}",
+            "button_label": "{{ block.repeater.button_label.value }}",
+            "button_link": "{{ block.repeater.button_link.value }}",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "key_features_8mM9xH"
+      ],
+      "settings": {
+        "background_class": "bg-white",
+        "title": "Key features",
+        "title_tag": "h3",
+        "title_color": "var(--boldsapphire)",
+        "text_color": "var(--navy)",
+        "padding_top_desktop": 68,
+        "padding_bottom_desktop": 138,
+        "padding_top_tablet": 40,
+        "padding_bottom_tablet": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "m_steps_wrDwtt": {
+      "type": "m-steps",
+      "blocks": {
+        "step_zKjGJj": {
+          "type": "step",
+          "repeater": "{{ product.metafields.custom.steps.value }}",
+          "settings": {
+            "card_background_class": "bg-cloud",
+            "step_card_image": "{{ block.repeater.image.value }}",
+            "step_card_title": "{{ block.repeater.title.value }}",
+            "step_card_title_tag": "h4",
+            "step_card_title_size": "h3",
+            "step_card_description": "<p>{{ block.repeater.description | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_zKjGJj"
+      ],
+      "settings": {
+        "background_class": "bg-white",
+        "heading": "{{ product.metafields.custom.steps_section_title.value }}",
+        "title_tag": "h2",
+        "title_size": "h3",
+        "description": "",
+        "card_spacing_desktop": 24,
+        "card_spacing_mobile": 24,
+        "padding_top_desktop": 88,
+        "padding_bottom_desktop": 116,
+        "padding_top_tablet": 56,
+        "padding_bottom_tablet": 92,
+        "padding_top_mobile": 54,
+        "padding_bottom_mobile": 120
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "m_features_FpzP8Y",
+    "m_steps_wrDwtt"
+  ]
+}

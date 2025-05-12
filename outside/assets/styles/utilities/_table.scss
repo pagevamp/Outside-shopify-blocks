@@ -1,0 +1,35 @@
+.c-table {
+
+  &--full {
+    width: 100%;
+    box-shadow: 0 0 0 0.1rem var(--neutral-900-a25);
+  }
+
+  &--neutral-900 {
+    box-shadow: 0 0 0 0.1rem var(--neutral-900-a25);
+  }
+
+  td,
+  th {
+    padding: 0.5rem;
+    border: 0.1rem solid var(--neutral-900-a25);
+    border-top: 0;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  tbody {
+    tr:last-child {
+      td {
+        border-block-end: 0;
+      }
+
+    }
+  }
+}

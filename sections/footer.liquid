@@ -1,0 +1,376 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.0625 }}rem;
+    }
+  }
+  {% if section.settings.background_class == 'bg-primary' or section.settings.background_class == 'bg-secondary' %}
+    .ni-footer .ni-footer__link {
+      color: var(--white);
+    }
+    .ni-footer .ni-footer__link:hover,
+    .ni-footer a:hover {
+      color: var(--darkgrey);
+    }
+  {% endif %}
+{%- endstyle -%}
+{% liquid 
+  if section.settings.background_class == 'bg-primary' or section.settings.background_class == 'bg-secondary'
+    assign text_color = 'text-white'
+  endif
+%}
+
+<footer class="footer ni-footer {{ section.settings.background_class }} {{ text_color }} section-{{ section.id }}-padding" id="ni-footer">
+  {%- liquid
+    assign has_social_icons = true
+    if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_linkedin_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+      assign has_social_icons = false
+    endif
+
+    if settings.brand_image == blank and settings.brand_headline == blank and settings.brand_description == blank
+      assign brand_empty = true
+    endif
+
+    if section.blocks.size == 1 and section.blocks[0].type == 'brand_information' and brand_empty and has_social_icons == false 
+      assign only_empty_brand = true
+    endif
+  -%}
+  {%- if section.blocks.size > 0
+    or section.settings.show_social
+    and has_social_icons == true
+  -%}
+    {%- unless only_empty_brand -%}
+      <div class="ni-footer__top pb-23 pb-md-33">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-2">
+              <div class="ni-footer__logo-wrapper scroll-trigger animate--slide-in me-lg-3 me-xl-n7"
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+              >
+              {%- assign footer_logo_alt = settings.logo_white.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo_white.aspect_ratio -%}
+              {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              <a href="{{ routes.root_url }}">
+                {{
+                  settings.logo_white
+                  | image_url: width: 600
+                  | image_tag:
+                    class: 'header__heading-logo',
+                    widths: widths,
+                    height: logo_height,
+                    width: settings.logo_width,
+                    alt: footer_logo_alt,
+                    sizes: sizes,
+                    preload: true
+                }}
+              </a>
+              {% liquid assign footer_text = section.blocks | where : "type", "text" %}
+              {%- for block in footer_text -%}
+                <div class="ni-footer__content mt-7 scroll-trigger animate--slide-in caption me-14 me-lg-n8 me-xl-11 mb-0"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+                >
+                  {{ block.settings.subtext }}
+                </div>
+              {%- endfor -%}
+              </div>
+            </div>
+            <div class="col-lg-10">
+              {% liquid assign link_list = section.blocks | where : "type", "link_list" %}
+              <div class="ni-footer__link-container d-flex justify-content-lg-end flex-wrap flex-lg-nowrap row-gap-15 row-gap-xl-0 column-gap-12 column-gap-md-17 column-gap-xl-32 mt-16 mt-lg-0 me-lg-8 me-xl-10">
+                {%- for block in link_list -%}
+                  <div class="ni-footer__link-wrapper scroll-trigger animate--slide-in"
+                  {% if settings.animations_reveal_on_scroll %}
+                    data-cascade
+                    style="--animation-order: {{ forloop.index }};"
+                  {% endif %}
+                  >
+                    {%- if block.settings.heading != blank -%}
+                      <div class="caption text-uppercase mb-9">{{- block.settings.heading -}}</div>
+                    {%- endif -%}
+                    {%- if block.settings.menu != blank -%}
+                      <ul class="ni-footer__list list-unstyled">
+                        {%- for link in block.settings.menu.links -%}
+                          <li class="ps-0 {% if forloop.last %}mb-0{% else %}mb-4{% endif %}">
+                          <a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %} {{ section.shopify_attributes }}
+                              class="ni-footer__link link text-caption-button{% if link.active %} ni-footer__link-active{% endif %} text-decoration-none"
+                            >
+                              {{ link.title | escape }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </div>
+                {% endfor %}
+                <div class="ni-footer__contact scroll-trigger animate--slide-in"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+                >
+                  {% liquid assign contact_information = section.blocks | where : "type", "contact_information" %}
+                  {%- for block in contact_information -%}
+                    {%- if block.settings.contact_heading != blank -%}
+                      <div class="caption text-uppercase mb-9">{{- block.settings.contact_heading -}}</div>
+                    {%- endif -%}
+                    <ul class="ni-footer__list list-unstyled text-caption-button">
+                      <li class="ps-0 mb-4">{{ settings.address }}</li>
+                      <li class="ps-0 mb-4">
+                      <a {% if settings.map == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.map }}"{% endif %} {{ section.shopify_attributes }} target="_blank">
+                          View on Maps
+                        </a>
+                      </li>
+                      <li class="ps-0 mb-4"><span> {{ block.settings.email_heading }} </span></li>
+                      <li class="ps-0 text-caption-button-inner"><p><a href="tel:{{ settings.phone }}">{{ settings.phone }}</a></p><p><a href="mailto:{{ settings.email }}">{{ settings.email }}</a></p></li>
+                    </ul>
+                  {% endfor %}
+                  {%- if section.settings.show_social and has_social_icons -%}
+                    <div class="ni-footer__social mt-10">
+                      {%- render 'social-icons', class: 'footer__list-social' -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endunless -%}
+  {%- endif -%}
+
+  <div class="ni-footer__bottom {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="ni-footer__bottom-content caption mb-0 pt-5 pt-md-7 text-center text-lg-start">
+            <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name -}}.
+            {% comment %} <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url -}}. {% endcomment %}
+            </span>
+            <span>All rights reserved</span>
+            {% liquid assign privacy_link_list = section.blocks | where : "type", "privacy_link_list" %}
+            {%- for block in privacy_link_list -%}
+              <span class="ni-footer__note position-relative d-block d-lg-inline mt-5 mt-lg-0">
+                {%- if block.settings.privacy_menu != blank -%}
+                  {%- for link in block.settings.privacy_menu.links -%}
+                    {%- assign link_count = block.settings.privacy_menu.links.size | minus:1 -%}
+                    <a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %} {{ section.shopify_attributes }}>{{ link.title | escape }}</a>
+                        {%- if forloop.index == link_count -%}
+                          <span class="mx-1">and</span>
+                        {%- else -%}
+                        <span class="space-right me-1">,</span>
+                        {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  </span>
+              {% endfor %}
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "t:sections.footer.blocks.text.settings.subtext.default",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "t:sections.footer.blocks.link_list.settings.heading.default",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label"
+        }
+      ]
+    },
+    {
+      "type": "contact_information",
+      "name": "Contact Information",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "contact_heading",
+          "default": "Address",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "email_heading",
+          "default": "Inquiries",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        }
+      ]
+    },
+    {
+      "type": "privacy_link_list",
+      "name": "Privacy Link List",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "privacy_menu",
+          "label": "Privacy Policy Menu"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "background_class",
+      "label": "Background Color",
+      "options": [
+        {
+          "label": "Secondary Navy",
+          "value": "bg-secondary"
+        },
+        {
+          "label": "Primary Sapphire",
+          "value": "bg-primary"
+        },
+        {
+          "label": "White",
+          "value": "bg-white"
+        }
+      ],
+      "default": "bg-secondary"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__9.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label",
+      "info": "t:sections.footer.settings.show_social.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label",
+      "info": "t:sections.footer.settings.enable_country_selector.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label",
+      "info": "t:sections.footer.settings.enable_language_selector.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "default": true,
+      "label": "t:sections.footer.settings.show_policy.label",
+      "info": "t:sections.footer.settings.show_policy.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 142
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Mobile",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Mobile",
+      "default": 20
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

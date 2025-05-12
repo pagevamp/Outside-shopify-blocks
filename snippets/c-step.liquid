@@ -1,0 +1,113 @@
+{% comment %}
+  Renders a step
+
+  Accepts:
+  - step_card_image: {String}
+  - step_card_title: {String}
+  - step_card_title_tag: {String}
+  - step_card_title_size: {String}
+  - step_card_description: {String}
+  - step_card_number: {String}
+  - card_background_class: {String}
+  - block: {Object}
+
+  Usage:
+  {% render 'c-step',
+    step_card_image: step_card_image,
+    step_card_title: step_card_title,
+    step_card_title_tag: step_card_title_tag,
+    step_card_title_size: step_card_title_size,
+    step_card_description: step_card_description,
+    step_card_number: step_card_number,
+    card_background_class: card_background_class,
+    block: block
+  %}
+{% endcomment %}
+
+{% liquid
+  if section.settings.background_class == 'bg-white'
+    assign content_color = 'text-secondary'
+
+  else
+    assign content_color = 'text-white'
+
+    if block.settings.card_background_class != 'bg-transparent'
+      assign content_color = 'text-secondary'
+    endif
+  endif
+%}
+
+<div class="c-step d-flex flex-column w-100 overflow-hidden {{ card_background_class }} {% if block.settings.card_background_class != 'bg-transparent' %}has-background{% else %}gap-10{% endif %}">
+  {% if step_card_image != blank %}
+    <div class="c-step__picture-wrapper w-100">
+      <picture class="c-step__picture c-picture overflow-hidden">
+        <source
+          srcset="
+            {%- if step_card_image.width >= 375 -%}{{ step_card_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if step_card_image.width >= 550 -%}{{ step_card_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if step_card_image.width >= 750 -%}{{ step_card_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if step_card_image.width >= 1100 -%}{{ step_card_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if step_card_image.width >= 1500 -%}{{ step_card_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {{ step_card_image | image_url }} {{ step_card_image.width }}w
+          "
+          media="(max-width: 989px)"
+        >
+
+        <source
+          srcset="
+            {%- if step_card_image.width >= 375 -%}{{ step_card_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if step_card_image.width >= 550 -%}{{ step_card_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if step_card_image.width >= 750 -%}{{ step_card_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if step_card_image.width >= 1100 -%}{{ step_card_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if step_card_image.width >= 1500 -%}{{ step_card_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {%- if step_card_image.width >= 1780 -%}{{ step_card_image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {{ step_card_image | image_url }}{{ step_card_image.width }}w
+          "
+          media="(min-width: 990px)"
+        >
+
+        <img
+          srcset="
+            {%- if step_card_image.width >= 375 -%}{{ step_card_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if step_card_image.width >= 550 -%}{{ step_card_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if step_card_image.width >= 750 -%}{{ step_card_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if step_card_image.width >= 1100 -%}{{ step_card_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if step_card_image.width >= 1500 -%}{{ step_card_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if step_card_image.width >= 1780 -%}{{ step_card_image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {{ step_card_image | image_url }} {{ step_card_image.width }}w
+          "
+          loading="lazy"
+          src="{{ step_card_image | image_url: width: 1100 }}"
+          alt="{{ step_card_title | default: shop.name }}"
+          width="{{ step_card_image.width }}"
+          height="{{ step_card_image.width | divided_by: step_card_image.aspect_ratio }}"
+          class="c-step__image w-100 h-auto object-fit-cover overflow-hidden"
+        >
+      </picture>
+    </div>
+  {% endif %}
+
+  <div class="c-step__content-wrapper">
+    <div class="c-step__content d-flex flex-column gap-3 gap-md-6 gap-xl-4 {{ content_color }} {% if block.settings.card_background_class != 'bg-transparent' %}p-8 p-md-7 p-xl-10{% endif %}">
+      {% if step_card_number != blank %}
+        <div class="c-step__number m-0 {% if block.settings.card_background_class != 'bg-transparent' %}text-body-primary{% else %}h2{% endif %}">
+          {{ step_card_number }}
+        </div>
+      {% endif %}
+
+      {% if step_card_title != blank %}
+        <div class="c-step__title">
+          <{{ step_card_title_tag }} class="m-0 {{ step_card_title_size }}">
+            {{ step_card_title }}
+          </{{ step_card_title_tag }}>
+        </div>
+      {% endif %}
+
+      {% if step_card_description != blank %}
+        <div class="c-step__description text-body-primary">
+          {{ step_card_description | newline_to_br }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

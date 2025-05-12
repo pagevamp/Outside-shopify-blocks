@@ -1,0 +1,395 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-steps__wrapper {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+
+    @media (min-width: 768px){
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+
+    @media (min-width: 1025px){
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+
+  .m-steps__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ section.settings.card_spacing_mobile | times: 0.0625 }}rem;
+
+    @media (min-width: 768px){
+      grid-template-columns: repeat(3, 1fr);
+      gap: {{ section.settings.card_spacing_desktop | times: 0.0625 }}rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="m-steps__wrapper {{ section.settings.background_class }}" id="m-steps-{{ section.id }}">
+  <div class="container d-flex flex-column gap-20 gap-md-16">
+    {% if section.settings.heading != blank or section.settings.description != blank %}
+      <div class="row">
+        <div class="col text-center d-flex flex-column gap-6 {% if section.settings.background_class == 'bg-white' %}text-bold-sapphire{% else %}text-white{% endif %}">
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.title_tag }} class="m-steps__heading m-0 {{ section.settings.title_size }}">
+              {{ section.settings.heading }}
+            </{{ section.settings.title_tag }}>
+          {% endif %}
+
+          {% if section.settings.description != blank %}
+            <div class="m-steps__description text-body-primary">
+              {{ section.settings.description | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="m-steps__cards {% if section.settings.background_class == 'bg-white' %}text-secondary{% else %}text-white{% endif %}">
+      {% assign step_cards = section.blocks | where: 'type', 'step' %}
+      {% for block in step_cards %}
+        {% liquid
+          assign step_card_image = block.settings.step_card_image
+          assign step_card_title = block.settings.step_card_title
+          assign step_card_title_tag = block.settings.step_card_title_tag
+          assign step_card_title_size = block.settings.step_card_title_size
+          assign step_card_description = block.settings.step_card_description
+          assign step_card_number = forloop.index
+          assign card_background_class = block.settings.card_background_class
+        %}
+
+        <div class="d-flex">
+          {% render 'c-step',
+            step_card_image: step_card_image,
+            step_card_title: step_card_title,
+            step_card_title_tag: step_card_title_tag,
+            step_card_title_size: step_card_title_size,
+            step_card_description: step_card_description,
+            step_card_number: step_card_number,
+            card_background_class: card_background_class,
+            block: block
+          %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Steps",
+  "tag": "section",
+  "class": "m-steps",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SECTION BACKGROUND SETTINGS"
+    },
+    {
+      "type": "select",
+      "id": "background_class",
+      "label": "Background Color",
+      "options": [
+        {
+          "label": "Secondary Navy",
+          "value": "bg-secondary"
+        },
+        {
+          "label": "White",
+          "value": "bg-white"
+        }
+      ],
+      "default": "bg-secondary"
+    },
+    {
+      "type": "header",
+      "content": "SECTION TITLE SETTINGS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Accept multiple payments with a single link"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Heading Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Heading Size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "SECTION DESCRIPTION SETTINGS"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Grow your online business by creating and sharing payment links directly with your customers.</p>"
+    },
+    {
+      "type": "header",
+      "content": "CARD SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "card_spacing_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Spacing Desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_spacing_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Spacing mobile",
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "SECTION SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 248,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 204
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 248,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 204
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 116
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 176
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "header",
+          "content": "CARD BACKGROUND SETTINGS"
+        },
+        {
+          "type": "select",
+          "id": "card_background_class",
+          "label": "Background Color",
+          "options": [
+            {
+              "label": "Cloud",
+              "value": "bg-cloud"
+            },
+            {
+              "label": "Transparent",
+              "value": "bg-transparent"
+            }
+          ],
+          "default": "bg-transparent"
+        },
+        {
+          "type": "header",
+          "content": "CARD IMAGE SETTINGS"
+        },
+        {
+          "type": "image_picker",
+          "id": "step_card_image",
+          "label": "Card Image"
+        },
+        {
+          "type": "header",
+          "content": "CARD TEXT SETTINGS"
+        },
+        {
+          "type": "text",
+          "id": "step_card_title",
+          "label": "Card Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "select",
+          "id": "step_card_title_tag",
+          "label": "Card Heading Tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            }
+          ],
+          "default": "h4"
+        },
+        {
+          "type": "select",
+          "id": "step_card_title_size",
+          "label": "Card Heading Size",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            }
+          ],
+          "default": "h4"
+        },
+        {
+          "type": "richtext",
+          "id": "step_card_description",
+          "label": "Card Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Steps",
+      "blocks": [
+        {
+          "type": "step"
+        },
+        {
+          "type": "step"
+        },
+        {
+          "type": "step"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

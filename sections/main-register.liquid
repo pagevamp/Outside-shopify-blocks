@@ -1,0 +1,232 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-create-account__wrapper {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-create-account__wrapper {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-create-account__wrapper {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="m-create-account__wrapper position-relative section-{{ section.id }}-padding">
+  <div class="c-gradient--primary c-gradient--primary--opacity-35 position-absolute inset-0 d-block"></div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-xl-4">
+        {%- form 'create_customer', novalidate: 'novalidate', class: 'mx-xl-n6 px-3 px-md-0 d-flex justify-content-center z-1 position-relative' -%}
+          <div class="ni-form w-100">
+            <h1 class="h3 mb-8 mb-md-11 text-center text-md-start">
+              {{ 'customer.register.title' | t }}
+            </h1>
+        
+            {%- if form.errors -%}
+              <h4 class="form__message h6" tabindex="-1" autofocus>
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h4>
+              <ul class="mb-6 mb-md-3 mb-xl-5">
+                {%- for field in form.errors -%}
+                  <li class="text-body-primary">
+                    {%- if field == 'form' -%}
+                      {{ form.errors.messages[field] }}
+                    {%- else -%}
+                      <a href="#RegisterForm-{{ field }}">
+                        {{ form.errors.translated_fields[field] | capitalize }}
+                        {{ form.errors.messages[field] }}
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+            <div class="form-group">
+              <label for="RegisterForm-FirstName" class="caption mb-1">
+                {{ 'customer.register.first_name' | t }}
+              </label>
+              <input
+                type="text"
+                name="customer[first_name]"
+                id="RegisterForm-FirstName"
+                {% if form.first_name %}
+                  value="{{ form.first_name }}"
+                {% endif %}
+                autocomplete="given-name"
+                placeholder="Victoria"
+                class="text-body-secondary"
+              >
+            </div>
+            <div class="form-group">
+              <label for="RegisterForm-LastName" class="caption mb-1">
+                {{ 'customer.register.last_name' | t }}
+              </label>
+              <input
+                type="text"
+                name="customer[last_name]"
+                id="RegisterForm-LastName"
+                {% if form.last_name %}
+                  value="{{ form.last_name }}"
+                {% endif %}
+                autocomplete="family-name"
+                placeholder="Smith"
+                class="text-body-secondary"
+              >
+            </div>
+            <div class="form-group">
+              <label for="RegisterForm-email" class="caption mb-1">
+                {{ 'customer.register.email' | t }}
+              </label>
+              <input
+                type="email"
+                name="customer[email]"
+                id="RegisterForm-email"
+                {% if form.email %}
+                  value="{{ form.email }}"
+                {% endif %}
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="email"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-email-error"
+                {% endif %}
+                placeholder="victoria@networkinternational.com"
+                class="text-body-secondary"
+              >
+            </div>
+        
+            {%- if form.errors contains 'email' -%}
+              <span id="RegisterForm-email-error" class="form__message text-body-primary mb-6 mb-md-3 mb-xl-5">
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}.
+              </span>
+            {%- endif -%}
+            <div class="form-group">
+              <label for="RegisterForm-password" class="caption mb-1">
+                {{ 'customer.register.password' | t }}
+              </label>
+              <input
+                type="password"
+                name="customer[password]"
+                id="RegisterForm-password"
+                aria-required="true"
+                {% if form.errors contains 'password' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-password-error"
+                {% endif %}
+                placeholder="*****************"
+                class="text-body-secondary"
+              >
+            </div>
+            {%- if form.errors contains 'password' -%}
+              <span id="RegisterForm-password-error" class="form__message text-body-primary mb-6 mb-md-3 mb-xl-5">
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                {{ form.errors.translated_fields.password | capitalize }}
+                {{ form.errors.messages.password }}.
+              </span>
+            {%- endif -%}
+            <div class="mt-6 mt-md-9">
+              <button class="btn btn-primary">
+                Create account 
+              </button>
+            </div>
+            </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "tag": "section",
+  "class": "m-create-account",
+  "settings": [
+    {
+      "type": "header",
+      "content": "SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 74
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 78
+    }
+  ]
+}
+{% endschema %}

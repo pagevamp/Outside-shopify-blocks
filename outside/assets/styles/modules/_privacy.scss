@@ -1,0 +1,93 @@
+.shopify-policy__container {
+  max-width: 90ch;
+  color: $navy;
+  padding-top: 4.875rem;
+  padding-bottom: 4.875rem;
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 3.375rem;
+    padding-bottom: 4.625rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 3.375rem;
+    padding-bottom: 8.0rem;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 300%;
+    height: 100%;
+    background: linear-gradient(180deg, #FFFFFF 1%, #F0F4F7 3%, #026FAF 71.5%);
+    pointer-events: none;
+    z-index: -1;
+    left: -100%;
+    opacity: 0.35;
+  }
+
+  .shopify-policy__title {
+    @include media-breakpoint-up(md) {
+      text-align: left;
+    }
+  }
+
+  .shopify-policy__body {
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &:not(:first-child) {
+        margin-top: 3.75rem;
+      }
+    }
+
+    p,
+    ul {
+      @extend .text-body-primary;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+
+      @include media-breakpoint-down(md) {
+        padding-left: 0;
+      }
+
+      li {
+        padding-left: 0;
+      }
+    }
+
+    table {
+      margin-bottom: 1.5rem;
+
+      &:not([class]) td,
+      &:not([class]) th {
+        @include media-breakpoint-down(md) {
+          padding: 0.75rem;
+        }
+      }
+
+      tr {
+        td {
+          vertical-align: top;
+        }
+      }
+
+      ul {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+main {
+  &:has(.shopify-policy__container) {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,361 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .m-key-features__wrapper {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-key-features__wrapper {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-key-features__wrapper {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+  #shopify-section-{{ section.id }} .c-key-feature > div {
+    @media(min-width: 768px) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  #shopify-section-{{ section.id }} .m-key-features__cards .c-key-feature:nth-child(even) {
+    @media(min-width:768px) {
+      flex-direction: row-reverse;
+    }
+  }
+  @media(min-width:768px) and (max-width:1024px) {
+
+    #shopify-section-{{ section.id }} .m-key-features__cards .c-key-feature:nth-child(even) .c-key-feature__content-wrapper .c-key-feature__content{
+      padding-left: 0 !important;
+      padding-right: 5.25rem !important;
+    }
+  }
+{%- endstyle -%}
+
+{% assign key_features = section.blocks | where: 'type', 'key_features' %}
+
+{% if key_features.size > 0 %}
+  <div class="m-key-features__wrapper {{ section.settings.background_class }} position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="m-key-feature__heading">
+            {% if section.settings.title != blank %}
+              <{{ section.settings.title_tag }} class="m-key-feature__title h2-h4 mb-8 mb-lg-14 mb-xl-20" style="color:{{ section.settings.title_color }}">
+                {{ section.settings.title | newline_to_br }}
+              </{{ section.settings.title_tag }}>
+            {% endif %}
+          </div>
+          <div class="m-key-features__cards d-flex flex-column row-gap-22 row-gap-lg-16" style="color: {{ section.settings.text_color }}">
+
+            {% for block in key_features %}
+              {% liquid
+              assign feature_title = block.settings.feature_title
+              assign feature_description = block.settings.feature_description
+              assign feature_image = block.settings.feature_image
+              assign feature_image_mobile = block.settings.feature_image_mobile
+              assign button_label = block.settings.button_label
+              assign button_link = block.settings.button_link
+              assign button_style = block.settings.button_style
+              %}
+              {% render 'c-key-feature',
+                feature_title : feature_title,
+                feature_description : feature_description,
+                feature_image : feature_image,
+                feature_image_mobile : feature_image_mobile,
+                button_label : button_label,
+                button_link : button_link,
+                button_style : button_style,
+                block: block
+              %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% javascript %}
+  function bindCTAButtonsToSubmit() {
+    const ctaBtns = document.querySelectorAll('.c-key-feature__cta-btn');
+    const submitBtn = document.querySelector('.ni-product-form__submit');
+
+    if (ctaBtns.length > 0 && submitBtn) {
+      ctaBtns.forEach(ctaBtn => {
+        ctaBtn.addEventListener('click', () => {
+          submitBtn.click();
+        });
+      });
+    }
+  }
+
+  // On DOM ready
+  document.addEventListener('DOMContentLoaded', () => {
+    bindCTAButtonsToSubmit();
+  });
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Key Features",
+    "tag": "section",
+    "class": "m-key-features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "BACKGROUND COLOR SETTINGS"
+      },
+      {
+        "type": "select",
+        "id": "background_class",
+        "label": "Background Color",
+        "options": [
+          {
+            "label": "Secondary Navy",
+            "value": "bg-secondary"
+          },
+          {
+            "label": "Primary Sapphire",
+            "value": "bg-primary"
+          },
+          {
+            "label": "White",
+            "value": "bg-white"
+          }
+        ],
+        "default": "bg-white"
+      },
+      {
+        "type": "header",
+        "content": "TITLE SETTINGS"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Key features"
+      },
+      {
+        "type": "select",
+        "id": "title_tag",
+        "label": "Heading Tag",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          }
+        ],
+        "default": "h2"
+      },
+      {
+        "type": "select",
+        "id": "title_color",
+        "label": "Title Color",
+        "options": [
+          {
+            "value": "var(--navy)",
+            "label": "Secondary(Navy)"
+          },
+          {
+            "value": "var(--sapphire)",
+            "label": "Primary(sapphire)"
+          },
+          {
+            "value": "var(--boldsapphire)",
+            "label": "Primary(sapphire)"
+          },
+          {
+            "value": "var(--white)",
+            "label": "White"
+          }
+        ],
+        "default": "var(--boldsapphire)"
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Body Text Color",
+        "options": [
+          {
+            "value": "var(--navy)",
+            "label": "Secondary(Navy)"
+          },
+          {
+            "value": "var(--sapphire)",
+            "label": "Primary(sapphire)"
+          },
+          {
+            "value": "var(--white)",
+            "label": "White"
+          }
+        ],
+        "default": "var(--navy)"
+      },
+      {
+        "type": "header",
+        "content": "SPACING SETTINGS"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Desktop",
+        "default": 68
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Desktop",
+        "default": 138
+      },
+      {
+        "type": "range",
+        "id": "padding_top_tablet",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Tablet",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_tablet",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Tablet",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top Mobile",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom Mobile",
+        "default": 32
+      }
+    ],
+    "blocks": [
+      {
+        "type": "key_features",
+        "name": "PAYMENT FEATURE",
+        "settings": [
+          {
+            "type": "text",
+            "id": "feature_title",
+            "label": "Feature Title",
+            "default": "All-in-one payment solution"
+          },
+          {
+            "type": "richtext",
+            "id": "feature_description",
+            "label": "Feature Description",
+            "default": "<p>Accept cards, QR codes, Easy Payment Plans, Loyalty Redemptions, and Buy Now Pay Later</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "feature_image",
+            "label": "Feature Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "feature_image_mobile",
+            "label": "Feature Image Mobile"
+          },
+          {
+            "type": "header",
+            "content": "BUTTON SETTINGS"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label",
+            "default": "Buy now"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Links"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button Style",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "secondary-white",
+                "label": "Secondary White"
+              }
+            ],
+            "default": "secondary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Key Features",
+        "blocks": [
+          {
+            "type": "key_features"
+          },
+          {
+            "type": "key_features"
+          },
+          {
+            "type": "key_features"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

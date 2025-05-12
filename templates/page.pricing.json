@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "m_leadspace_cXgGe6": {
+      "type": "m-leadspace",
+      "blocks": {
+        "leadspace_content_kPJgAX": {
+          "type": "leadspace_content",
+          "settings": {
+            "eyebrow": "Accept Payments",
+            "heading": "Start accepting payments quickly",
+            "title_tag": "h1",
+            "title_color": "var(--navy)",
+            "description": "Accept payments for as little as 2.25% per transaction",
+            "description_color": "var(--navy)",
+            "button_label_first": "Learn more",
+            "button_link_first": "/#m-buy-box",
+            "button_style_first": "primary",
+            "link_first_new_tab": false,
+            "button_label_second": "Contact sales",
+            "button_link_second": "tel:+4733378901",
+            "button_style_second": "secondary",
+            "link_second_new_tab": false,
+            "content_top_spacing_desktop": 0
+          }
+        },
+        "leadspace_image_4FnDjJ": {
+          "type": "leadspace_image",
+          "settings": {
+            "image_desktop_ratio": "81/56"
+          }
+        },
+        "pricing_card_hzgAdQ": {
+          "type": "pricing_card",
+          "settings": {
+            "pricing_title": "Standard payment fee",
+            "pricing_description": "<p>2.25% + 0AED for POS Transaction fee<span>+0.60 AED for ecom*</span></p><p>*Includes fraud assessment fee</p>",
+            "pricing_theme": "bg-bold-amaranth"
+          }
+        },
+        "pricing_card_qJHnUB": {
+          "type": "pricing_card",
+          "settings": {
+            "pricing_title": "Accept payments with simple pricing",
+            "pricing_description": "<p>+ 0.75% for International and premium cards <span>+ 0.5% for DCC (only on Terminal)</span></p>",
+            "pricing_theme": "bg-teal"
+          }
+        }
+      },
+      "block_order": [
+        "leadspace_content_kPJgAX",
+        "leadspace_image_4FnDjJ",
+        "pricing_card_hzgAdQ",
+        "pricing_card_qJHnUB"
+      ],
+      "name": "Leadspace",
+      "settings": {
+        "leadspace_type": "fifty_fifty",
+        "background_class": "bg-gradient-payment",
+        "section_spacing": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
+        "shadow_image": false,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 50,
+        "padding_top_tablet": 98,
+        "padding_bottom_tablet": 86,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 128
+      }
+    },
+    "m_payment_ecosystem_mUne3X": {
+      "type": "m-payment-ecosystem",
+      "blocks": {
+        "feature_NMd33p": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group.svg",
+            "feature_title": "24/7 Local Support",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Support available by email, phone, or chat</li><li>Technical support</li><li>Comprehensive knowledge base</li></ul>"
+          }
+        },
+        "feature_gQFfkJ": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_c5f75d57-79fb-45d2-8e42-44f6b1cf7ac3.svg",
+            "feature_title": "On-Site Setup\nand Assistance",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Professional installation</li><li>Staff training</li><li>Ongoing technical assistance</li></ul>"
+          }
+        },
+        "feature_c6KN9B": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_1.svg",
+            "feature_title": "Next Day Settlement",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Get your funds faster</li><li>Transparent payouts</li><li>Control payout timing</li></ul>"
+          }
+        },
+        "feature_67H79a": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_2.svg",
+            "feature_title": "Quick setup",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Order today, receive your terminal tomorrow</li><li>Start taking payments in 3 steps</li><li>Simple activation process</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_NMd33p",
+        "feature_gQFfkJ",
+        "feature_c6KN9B",
+        "feature_67H79a"
+      ],
+      "name": "Payment Ecosystem",
+      "settings": {
+        "background_class": "bg-white",
+        "column_layout": "one-third-by-two-thirds",
+        "section_title": "Complete Payment Ecosystem",
+        "section_title_tag": "h2",
+        "section_description": "",
+        "padding_top_desktop": 162,
+        "padding_bottom_desktop": 136,
+        "padding_top_tablet": 80,
+        "padding_bottom_tablet": 54,
+        "padding_top_mobile": 96,
+        "padding_bottom_mobile": 96
+      }
+    }
+  },
+  "order": [
+    "main",
+    "m_leadspace_cXgGe6",
+    "m_payment_ecosystem_mUne3X"
+  ]
+}

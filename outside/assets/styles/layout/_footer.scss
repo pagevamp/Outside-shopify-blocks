@@ -1,0 +1,63 @@
+.#{$global} {
+  &-footer {
+    &__link {
+
+      &-wrapper {
+        @include media-breakpoint-down(lg) {
+          flex: 0 0 40%;
+          max-width: 40%;
+        }
+
+        &:first-child,
+        &:last-child {
+          @include media-breakpoint-down(md) {
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    &__list {
+      p {
+        margin-bottom: 0;
+        line-height: 1.2;
+      }
+    }
+
+    &__note {
+
+      @include media-breakpoint-up(lg) {
+        margin-inline-start: 0.875rem;
+        padding-inline-start: 1.125rem;
+
+        &::before {
+          content: "|";
+          position: absolute;
+          left: 0;
+        }
+      }
+
+      @include media-breakpoint-down(sm) {
+        padding-inline: 0.25rem;
+      }
+
+      .space-right {
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+
+    &__bottom {
+      &-content {
+        border-top: 0.047rem solid $white;
+      }
+    }
+    &__content {
+      p {
+        line-height: 1.2;
+      }
+    }
+  }
+}

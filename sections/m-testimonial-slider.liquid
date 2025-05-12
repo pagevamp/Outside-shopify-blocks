@@ -1,0 +1,358 @@
+{%- style -%}
+
+  #shopify-section-{{ section.id }} .m-testimonial-slider {
+    padding-top: {{ section.settings.padding_top_mobile | times: 0.0625 }}rem;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | times: 0.0625 }}rem;
+  }
+  @media (min-width: 768px){
+    #shopify-section-{{ section.id }} .m-testimonial-slider {
+      padding-top: {{ section.settings.padding_top_tablet | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_tablet | times: 0.0625 }}rem;
+    }
+  }
+  @media (min-width: 1025px){
+    #shopify-section-{{ section.id }} .m-testimonial-slider {
+      padding-top: {{ section.settings.padding_top_desktop | times: 0.0625 }}rem;
+      padding-bottom: {{ section.settings.padding_bottom_desktop | times: 0.0625 }}rem;
+    }
+  }
+
+{% if section.settings.background_class == 'bg-primary' or section.settings.background_class == 'bg-secondary' %}
+    #shopify-section-{{ section.id }} .m-testimonial-slider {
+      color: var(--white);
+    }
+  {% endif %}
+
+  .testimonial-slider-js {
+
+    &.swiper {
+      height: 100%;
+      max-width: 100%;
+    }
+    .swiper-slide {
+      opacity: 0 !important;
+      transition: opacity .5s ease-in-out;
+    }
+
+    .swiper-slide.swiper-slide-active {
+      opacity: 1 !important;
+    }
+  }
+  .testimonial__logo {
+    .swiper-slide {
+      opacity: 0.24;
+      width: auto !important;
+      cursor: pointer;
+      img {
+        width: 5.625rem;
+        height: 2.5rem;
+        @media(min-width:768px) {
+          width: 9.25rem;
+          height: 4rem;
+        }
+      }
+    }
+    .swiper-slide.swiper-slide-thumb-active {
+      opacity: 1;
+    }
+  }
+{%- endstyle -%}
+
+<div class="m-testimonial-slider tabbed-testimonial-slider text-center position-relative {{ section.settings.background_class }}">
+  <div class="container overflow-hidden">
+    <div class="row justify-content-center">
+      <div class="col-15 col-lg-15 col-xl-11">
+        {% if section.settings.heading != blank %}
+          <{{ section.settings.title_tag }} class="m-buy-box__heading h5 mb-10 mb-lg-8 mb-xl-6 px-2 px-md-0">
+            {{ section.settings.heading | newline_to_br }}
+          </{{ section.settings.title_tag }}>
+        {% endif %}
+        <div class="m-testimonail-slider__wrapper px-xl-4">
+          <div class="d-flex justify-content-between flex-column flex-fill">
+            <div class="press-testimonial-wrapper">
+              <div class="swiper testimonial-slider-js {% if section.settings.auto_play == true %} autoplay-slide {% endif %}">
+                <div class="swiper-wrapper">
+                  {% liquid assign testimonial = section.blocks | where : "type", "testimonial" %}
+                  {%- for block in testimonial -%}
+                    <div class="swiper-slide">
+                      <h3 class="h3 mb-0">
+                        “{{ block.settings.content }} ”
+                      </h3>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial__logo  pt-16 pt-lg-11 pt-xl-16 {% if section.settings.slide_change_on_hover %} hover-slide {% endif %}">
+              <div class="swiper testimonial-logo-slider-js">
+                <div class="swiper-wrapper column-gap-4 column-gap-md-10 d-flex justify-content-center flex-wrap align-items-center">
+                  {% liquid assign testimonial = section.blocks | where : "type", "testimonial" %}
+                    {%- for block in testimonial -%}
+                      <div class="swiper-slide">
+                        <div class="swiper-logo">
+                          <img srcset="{{ block.settings.client | image_url: width: 300 }}"
+                            height="64"
+                            width="148"
+                            class="d-block"
+                            src="{{ block.settings.client | image_url: width: 600 }}"
+                            alt="{{ block.settings.client.alt | escape }}" loading="lazy">
+                        </div>
+                      </div>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% javascript %}
+  let tabbedTestimonialWrapper = document.querySelectorAll('.tabbed-testimonial-slider');
+
+  tabbedTestimonialWrapper.forEach(element => {
+    let tabbedSliderLogoJs = element.querySelector('.testimonial-logo-slider-js');
+
+        let quoteLogoSlide = new Swiper(tabbedSliderLogoJs, {
+          navigation: false,
+          observer: true,
+          observeParents: true,
+          slidesPerView: 10,
+        });
+
+        let slides = element.querySelectorAll('.hover-slide .swiper-slide');
+        function tabbedQuoteSlideChange(slideCard) {
+          slides.forEach((slide , index) => {
+            slide.addEventListener("mouseenter", ()=>{
+              slideCard.slideTo(index)
+            });
+          });
+        }
+
+        let sliderTabbedQuoteJs = element.querySelector('.testimonial-slider-js');
+
+        if (sliderTabbedQuoteJs) {
+          if (sliderTabbedQuoteJs.classList.contains('autoplay-slide')) {
+            let tabbedQuoteSlide = new Swiper(sliderTabbedQuoteJs, {
+              navigation: false,
+              effect: "fade",
+              observer: true,
+              observeParents: true,
+              autoplay: {
+                disableOnInteraction: false,
+              },
+              thumbs: {
+                swiper: quoteLogoSlide,
+              },
+            });
+            tabbedQuoteSlideChange(tabbedQuoteSlide)
+          }
+          else {
+            let tabbedQuoteSlide = new Swiper(sliderTabbedQuoteJs, {
+              navigation: false,
+              effect: "fade",
+              observer: true,
+              observeParents: true,
+              thumbs: {
+                swiper: quoteLogoSlide,
+              },
+            });
+            tabbedQuoteSlideChange(tabbedQuoteSlide)
+          }
+        }
+
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "BACKGROUND SETTINGS"
+    },
+    {
+      "type": "select",
+      "id": "background_class",
+      "label": "Background Color",
+      "options": [
+        {
+          "label": "Secondary Navy",
+          "value": "bg-secondary"
+        },
+        {
+          "label": "Primary Sapphire",
+          "value": "bg-primary"
+        },
+        {
+          "label": "White",
+          "value": "bg-white"
+        }
+      ],
+      "default": "bg-primary"
+    },
+    {
+      "type": "header",
+      "content": "HEADER SETTINGS"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why businesses choose Network International"            
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Heading Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        }
+      ],
+      "default": "h5"
+    },
+    {
+      "type": "header",
+      "content": "SPACING SETTINGS"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 136
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 156
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 104
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "SLIDER SETTINGS"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_change_on_hover",
+      "label": "Change Slide on Hover",
+      "info": "For Press: On checked, slide will change on hover and click and if not checked slide changes on click only.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_play",
+      "label": "Enable Auto Play",
+      "info": "For Press: On checked, slides will be in autoplay state",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Testimonail Content",
+          "default": "We added Network's Terminal to our business and we see nothing but the numbers go up! It gives an easier way for people to pay me and check out."
+        },
+        {
+          "type": "image_picker",
+          "id": "client",
+          "label": "Client"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slider",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

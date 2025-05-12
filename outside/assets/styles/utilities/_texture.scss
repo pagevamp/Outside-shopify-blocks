@@ -1,0 +1,173 @@
+.u {
+  &-paper-texture {
+    position: relative;
+
+    &:before {
+      content: '';
+      background-image: url(https://cdn.shopify.com/s/files/1/0903/4258/8722/files/texture-paper_2x_50e80fc3-5814-49aa-ae1d-6cac83141986.jpg?v=1738165829);
+      background-size: 256px;
+      background-repeat: repeat;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      position: absolute;
+    }
+
+    &:after {
+      content: '';
+    }
+
+    &--primary {
+      background-color: var(--neutral-100);
+
+      &:before {
+        mix-blend-mode: hard-light;
+        opacity: 0.15;
+      }
+    }
+
+    &--secondary {
+      background-color: var(--neutral-200);
+
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.7;
+      }
+    }
+
+    // Tertiary
+    &--tertiary {
+      background-color: var(--neutral-300);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.4;
+      }
+    }
+
+    // Primary Inverse
+    &--primary-inverse {
+      background-color: var(--neutral-900);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.9;
+      }
+    }
+
+    // Secondary Inverse
+    &--secondary-inverse {
+      background-color: var(--neutral-800);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.7;
+      }
+    }
+
+    // Tertiary Inverse
+    &--tertiary-inverse {
+      background-color: var(--neutral-700);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.7;
+      }
+    }
+
+    // Accent colors
+    @each $i in (1, 2, 3, 4, 5, 6, 7) {
+      &--accent-#{$i} {
+        background-color: var(--accent-#{$i}-bg);
+        &:before {
+          mix-blend-mode: overlay;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}
+
+
+.u {
+  &-cardboard-texture {
+    position: relative;
+
+    &:before {
+      content: '';
+      background-image: url(https://cdn.shopify.com/s/files/1/0903/4258/8722/files/texture-cardboard_2x_152e7a65-9036-46f4-be46-e063c5049f79.jpg?v=1738165829);
+      background-size: 512px;
+      background-repeat: repeat;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      position: absolute;
+    }
+
+    &:after {
+      content: '';
+    }
+
+    &--primary {
+      background-color: var(--neutral-100);
+
+      &:before {
+        mix-blend-mode: hard-light;
+        opacity: 0.15;
+      }
+    }
+
+    &--secondary {
+      background-color: var(--neutral-200);
+
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.7;
+      }
+    }
+
+    // Tertiary
+    &--tertiary {
+      background-color: var(--neutral-300);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.4;
+      }
+    }
+
+    // Primary Inverse
+    &--primary-inverse {
+      background-color: var(--neutral-900);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.9;
+      }
+    }
+
+    // Secondary Inverse
+    &--secondary-inverse {
+      background-color: var(--neutral-800);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.7;
+      }
+    }
+
+    // Tertiary Inverse
+    &--tertiary-inverse {
+      background-color: var(--neutral-700);
+      &:before {
+        mix-blend-mode: overlay;
+        opacity: 0.7;
+      }
+    }
+
+    // Accent colors
+    @each $i in (1, 2, 3, 4, 5, 6, 7) {
+      &--accent-#{$i} {
+        background-color: var(--accent-#{$i}-bg);
+        &:before {
+          mix-blend-mode: overlay;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}
+

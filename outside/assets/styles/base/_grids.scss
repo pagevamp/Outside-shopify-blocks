@@ -1,0 +1,12 @@
+.container,
+.shopify-policy__container {
+  padding-inline: 1.25rem;
+
+  @include media-breakpoint-up(lg) {
+    padding-inline: 3.375rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-inline: 3.75rem;
+  }
+}

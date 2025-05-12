@@ -1,0 +1,109 @@
+{% comment %}
+  Renders a box buy product
+
+  Accepts:
+  - product: {Object} Product liquid object
+
+  Usage:
+  {% render 'box-product' %}
+{% endcomment %}
+
+{% liquid
+  if box_product_image != blank
+    assign product_image = box_product_image
+  else
+    assign product_image = box_product.featured_image
+  endif
+
+  if box_product_title != blank
+    assign product_title = box_product_title
+  else
+    assign product_title = box_product.title
+  endif
+
+  if box_product_description != blank
+    assign product_description = box_product_description
+  else
+    assign product_description = box_product.description | strip_html | truncate: 74, '...'
+  endif
+
+  if box_cta_link != blank
+    assign button_link = box_cta_link
+  else
+    assign button_link = box_product.url
+  endif
+
+  assign product_image_alt = product_image.alt | default: product_title
+%}
+
+<div class="c-box-product d-flex flex-column c-box-product--{{ block_id }} px-lg-1 px-xl-0">
+
+  {% if product_image != blank %}
+    <div class="c-box-product__picture-wrapper w-100 mb-4 mb-md-8">
+      <picture class="c-box-product__picture c-picture overflow-hidden px-20 px-md-9">
+          <source srcset="{%- if product_image.width >= 375 -%}{{ product_image | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if product_image.width >= 550 -%}{{ product_image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if product_image.width >= 750 -%}{{ product_image | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if product_image.width >= 1100 -%}{{ product_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if product_image.width >= 1500 -%}{{ product_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {{ product_image | image_url }} {{ product_image.width }}w"
+          media="(max-width: 989px)">
+          <source srcset="{%- if product_image.width >= 375 -%}{{ product_image | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if product_image.width >= 550 -%}{{ product_image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if product_image.width >= 750 -%}{{ product_image | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if product_image.width >= 1100 -%}{{ product_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if product_image.width >= 1500 -%}{{ product_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if product_image.width >= 1780 -%}{{ product_image | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {{ product_image | image_url }}{{ product_image.width }}w"
+          media="(min-width: 990px)">
+        <img
+          srcset="
+            {%- if product_image.width >= 375 -%}{{ product_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if product_image.width >= 550 -%}{{ product_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if product_image.width >= 750 -%}{{ product_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if product_image.width >= 1100 -%}{{ product_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if product_image.width >= 1500 -%}{{ product_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if product_image.width >= 1780 -%}{{ product_image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {{ product_image | image_url }} {{ product_image.width }}w
+          "
+          loading="lazy"
+          src="{{ product_image | image_url: width: 1100 }}"
+          alt="{{ product_image_alt | default: shop.name }}"
+          width="{{ product_image.width }}"
+          height="{{ product_image.width | divided_by: product_image.aspect_ratio }}"
+        >
+      </picture>
+    </div>
+  {% endif %}
+
+  <div class="c-box-product__content-wrapper">
+    <div class="c-box-product__content text-center">
+
+      {% if product_title != blank %}
+        <div class="c-box-product__title">
+          <{{ box_product_title_tag }} class="h4 mb-4 mb-md-6">
+            {{ product_title | newline_to_br }}
+          </{{ box_product_title_tag }}>
+        </div>
+      {% endif %}
+
+      {% if product_description != blank %}
+        <div class="c-box-product__description mb-10 mb-md-6 text-body-primary--all">
+          {{ product_description | newline_to_br }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% unless box_cta_label == blank %}
+    <div class="c-box-product__cta text-center mt-auto">
+      {% if box_cta_label != blank %}
+        <div class="c-box-product__cta-wrapper">
+        <a {% if button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ button_link }}"{% endif %}
+          class="c-box-product__cta btn btn-{{ box_cta_style }}" {{ section.shopify_attributes }}>
+            {{ box_cta_label }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endunless %}
+</div>

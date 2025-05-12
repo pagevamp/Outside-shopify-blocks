@@ -1,0 +1,134 @@
+@import './common';
+
+.m-payment-ecosystem {
+  $self: &;
+
+  &__feature-description {
+    ul {
+      margin-left: 0.5rem; // 8px
+
+      @include media-breakpoint-up(md) {
+        margin-left: 0.75rem; // 12px
+      }
+
+      li {
+        list-style-type: disc;
+        padding: 0;
+        
+        &:not(:last-child) {
+          margin-bottom: 0.5rem; // 8px
+
+          @include media-breakpoint-up(md) {
+            margin-bottom: 0.75rem; // 12px
+          }
+        }
+
+        &::marker {
+          color: currentColor;
+        }
+      }
+    }
+  }
+
+  &--one-third-by-two-thirds {
+    #{$self}__content {
+      @include media-breakpoint-up(md) {
+        max-width: 18.125rem; // 290px
+      }
+      
+      @include media-breakpoint-up(lg) {
+        max-width: 20.4375rem; // 327px
+      }
+    }
+
+    #{$self}__row-gap {
+      row-gap: 4rem; // 64px
+
+      @include media-breakpoint-up(md) {
+        row-gap: 2.25rem; // 36px
+      }
+    }
+
+    #{$self}__feature,
+    #{$self}__content {
+      padding: 0 2.6875rem; // 43px
+
+      @include media-breakpoint-up(md) {
+        padding: 0;
+      }
+    }
+
+    #{$self}__feature {
+      gap: 0.5rem; // 8px
+
+      @include media-breakpoint-up(md) {
+        gap: 1.375rem; // 22px
+        max-width: 18.25rem; // 292px
+      }
+      
+      @include media-breakpoint-up(xl) {
+        max-width: 22.1875rem; // 355px
+      }
+    }
+  
+    #{$self}__feature-picture {
+      max-width: 4.625rem; // 74px
+    }
+    
+    #{$self}__feature-content {
+      gap: 1.375rem; // 22px
+    }
+  }
+
+  &--fifty-fifty {
+    #{$self}__content {
+      @include media-breakpoint-up(md) {
+        max-width: 23.9375rem; // 383px
+      }
+      
+      @include media-breakpoint-up(xl) {
+        max-width: 32.8125rem; // 525px
+      }
+    }
+
+    #{$self}__row-gap {
+      row-gap: 4rem; // 64px
+      
+      @include media-breakpoint-up(md) {
+        row-gap: 3.18875rem; // 51.02px
+      }
+      
+      @include media-breakpoint-up(xl) {
+        row-gap: 4.68875rem; // 75.02px
+      }
+    }
+
+    #{$self}__feature,
+    #{$self}__feature-content {
+      gap: 1.405rem; // 22.48px
+    }
+
+    #{$self}__feature,
+    #{$self}__content {
+      padding: 0 2.6875rem; // 43px
+
+      @include media-breakpoint-up(md) {
+        padding: 0;
+      }
+    }
+  
+    #{$self}__feature {
+      @include media-breakpoint-up(md) {
+        max-width: 11.75rem; // 188px
+      }
+      
+      @include media-breakpoint-up(xl) {
+        max-width: 14.25rem; // 228px
+      }
+    }
+  
+    #{$self}__feature-picture {
+      max-width: 3.15625rem; // 50.5px
+    }
+  }
+}

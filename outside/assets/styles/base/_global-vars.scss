@@ -1,0 +1,23 @@
+$global: 'ni';
+
+// $font-family-heading: 'Tay Lenon', system-ui !default;
+// $font-family-subheading: 'Tay Kula', system-ui !default;
+
+:root {
+  // --bs-font-subheading: 'Tay Kula', system-ui;
+  // --bs-font-heading: 'Tay Lenon', system-ui;
+  // --bs-body-font: "Averia Serif Libre", system-ui;
+  --white: #{$white};
+  --black: #{$black};
+  --sapphire: #{$sapphire};
+  --amaranth: #{$amaranth};
+  --navy: #{$navy};
+  --salmon: #{$salmon};
+  --boldamaranth: #{$bold-amaranth};
+  --boldsapphire: #{$bold-sapphire};
+  --pacificblue: #{$pacific-blue};
+  --boldmist: #{$bold-mist};
+  --darkgrey: #{$dark-grey};
+  --cloud: #{$cloud}; 
+  --light-blue: #{$light-blue}; 
+}

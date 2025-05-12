@@ -1,0 +1,123 @@
+{% comment %}
+  Renders a step
+  Accepts:
+  - feature_title: {String}
+  - feature_description: {String}
+  - feature_image: {String}
+  - feature_image_mobile: {String}
+  - button_label: {String}
+  - button_link: {String}
+  - button_style: {String}
+  - block: {Object}
+  Usage:
+  {% render 'c-key-feature',
+    feature_title: features_title,
+    feature_description: feature_description,
+    feature_image: feature_image,
+    feature_image_mobile: feature_image_mobile,
+    button_label: button_label,
+    button_link: button_link,
+    button_style: button_style,
+    block: block
+  %}
+{% endcomment %}
+<div class="c-key-feature d-md-flex">
+  {% if feature_image != blank %}
+    <div class="c-key-feature__picture-wrapper pe-xl-3 mb-5 mb-md-0">
+      <picture class="c-key-feature__picture c-picture overflow-hidden">
+        {%- if feature_image_mobile != blank -%}
+          <source srcset="
+            {%- if feature_image_mobile.width >= 375 -%}{{ feature_image_mobile | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if feature_image_mobile.width >= 550 -%}{{ feature_image_mobile | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if feature_image_mobile.width >= 750 -%}{{ feature_image_mobile | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if feature_image_mobile.width >= 1100 -%}{{ feature_image_mobile | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if feature_image_mobile.width >= 1500 -%}{{ feature_image_mobile | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {{ feature_image_mobile | image_url }} {{ feature_image_mobile.width }}w"
+            media="(max-width: 989px)">
+        {% else %}
+        <source
+          srcset="
+            {%- if feature_image.width >= 375 -%}{{ feature_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if feature_image.width >= 550 -%}{{ feature_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if feature_image.width >= 750 -%}{{ feature_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if feature_image.width >= 1100 -%}{{ feature_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if feature_image.width >= 1500 -%}{{ feature_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {{ feature_image | image_url }} {{ feature_image.width }}w
+          "
+          media="(max-width: 989px)"
+        >
+      {%- endif -%}
+
+        <source
+          srcset="
+            {%- if feature_image.width >= 375 -%}{{ feature_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if feature_image.width >= 550 -%}{{ feature_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if feature_image.width >= 750 -%}{{ feature_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if feature_image.width >= 1100 -%}{{ feature_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if feature_image.width >= 1500 -%}{{ feature_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {%- if feature_image.width >= 1780 -%}{{ feature_image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {{ feature_image | image_url }}{{ feature_image.width }}w
+          "
+          media="(min-width: 990px)"
+        >
+
+        <img
+          srcset="
+            {%- if feature_image.width >= 375 -%}{{ feature_image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if feature_image.width >= 550 -%}{{ feature_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if feature_image.width >= 750 -%}{{ feature_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if feature_image.width >= 1100 -%}{{ feature_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if feature_image.width >= 1500 -%}{{ feature_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if feature_image.width >= 1780 -%}{{ feature_image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {{ feature_image | image_url }} {{ feature_image.width }}w
+          "
+          loading="lazy"
+          src="{{ feature_image | image_url: width: 1100 }}"
+          alt="{{ feature_title | default: shop.name }}"
+          width="{{ feature_image.width }}"
+          height="{{ feature_image.width | divided_by: feature_image.aspect_ratio }}"
+          class="c-key-feature__image w-100 h-auto object-fit-cover overflow-hidden"
+        >
+      </picture>
+    </div>
+  {% endif %}
+  <div class="c-key-feature__content-wrapper d-flex">
+    <div class="c-key-feature__content d-flex flex-column row-gap-6 row-gap-lg-8 ms-xl-n3 justify-content-md-center ps-lg-10 pe-lg-11 pe-xl-20 w-100">
+      {% if feature_title != blank %}
+        <div class="c-key-feature__title">
+          <h4 class="h3-h4 mb-0">
+            {{ feature_title }}
+          </h4>
+        </div>
+      {% endif %}
+      {% if feature_description != blank %}
+        <div class="c-key-feature__description pe-xl-12 text-body-primary">
+            {{ feature_description }}
+        </div>
+      {% endif %}
+      {%- if block.settings.button_label != blank -%}
+        
+        <div class="c-key-feature__cta">
+          {% if block.settings.button_link != blank %}
+            <a
+              {% if block.settings.button_link == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ block.settings.button_link }}"
+              {% endif %}
+              class="btn btn-{{ block.settings.button_style }}"
+            >
+              {{ block.settings.button_label | escape }}
+            </a>
+
+          {% else %}
+            <button class="btn btn-{{ block.settings.button_style }} c-key-feature__cta-btn">
+              {{ block.settings.button_label | escape }}
+            </button>
+          {% endif %}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>

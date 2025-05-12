@@ -1,0 +1,223 @@
+// Used for theme colors only
+
+.c-theme-colors {
+  &--primary {
+    color: $neutral-900;
+
+    .accordion,
+    .accordion-item {
+      --bs-accordion-color: var(--neutral-900);
+      --bs-accordion-btn-color: var(--neutral-900);
+    }
+  }
+
+  &--secondary {
+    color: $neutral-900;
+
+    .accordion,
+    .accordion-item {
+      --bs-accordion-color: $neutral-900;
+      --bs-accordion-btn-color: $neutral-900;
+    }
+  }
+
+  &--tertiary {
+    color: $neutral-900;
+
+    .accordion,
+    .accordion-item {
+      --bs-accordion-color: $neutral-900;
+      --bs-accordion-btn-color: $neutral-900;
+    }
+  }
+
+  &--primary-inverse {
+    color: var(--neutral-100);
+
+    .accordion,
+    .accordion-item {
+      --bs-accordion-color: var(--neutral-100);
+      --bs-accordion-btn-color: var(--neutral-100);
+    }
+  }
+
+  &--secondary-inverse {
+    color: var(--neutral-100);
+
+    .accordion,
+    .accordion-item {
+      --bs-accordion-color: var(--neutral-100);
+      --bs-accordion-btn-color: var(--neutral-100);
+    }
+  }
+
+  &--tertiary-inverse {
+    color: var(--neutral-100);
+
+    .accordion,
+    .accordion-item {
+      --bs-accordion-color: var(--neutral-100);
+      --bs-accordion-btn-color: var(--neutral-100);
+    }
+  }
+
+  @each $i in (1, 2, 3, 4, 5, 6, 7) {
+    &--accent-#{$i} {
+      color: var(--neutral-100);
+
+      .accordion,
+      .accordion-item {
+        --bs-accordion-color: var(--neutral-100);
+        --bs-accordion-btn-color: var(--neutral-100);
+      }
+    }
+  }
+
+  // for footer 
+  &__footer {
+    &--primary {
+      color: $neutral-900 !important;
+
+      &.footer__content-top .footer-block__details-content li:nth-child(odd) a:before {
+        background: $neutral-900 !important;
+      }
+
+      &.footer__content-top .footer-block__details-content li:nth-child(2n) a:before {
+        background: $neutral-900 !important;
+      }
+
+      &.footer__content-top .footer-block__details-content li:last-child a:after {
+        background: $neutral-900 !important;
+      }
+
+      .link {
+        color: $neutral-900 !important;
+      }
+
+      .policies li a {
+        color: $neutral-900 !important;
+      }
+    }
+
+    &--secondary {
+      color: $neutral-900 !important;
+
+      &.footer__content-top .footer-block__details-content li:nth-child(odd) a:before {
+        background: $neutral-900 !important;
+      }
+
+      &.footer__content-top .footer-block__details-content li:nth-child(2n) a:before {
+        background: $neutral-900 !important;
+      }
+
+      &.footer__content-top .footer-block__details-content li:last-child a:after {
+        background: $neutral-900 !important;
+      }
+
+      .link {
+        color: $neutral-900 !important;
+      }
+
+      .policies li a {
+        color: $neutral-900 !important;
+      }
+
+    }
+
+    &--tertiary {
+      color: $neutral-900 !important;
+
+      &.footer__content-top .footer-block__details-content li:nth-child(odd) a:before {
+        background: $neutral-900 !important;
+      }
+
+      &.footer__content-top .footer-block__details-content li:nth-child(2n) a:before {
+        background: $neutral-900 !important;
+      }
+
+      &.footer__content-top .footer-block__details-content li:last-child a:after {
+        background: $neutral-900 !important;
+      }
+
+      .link {
+        color: $neutral-900 !important;
+      }
+
+      .policies li a {
+        color: $neutral-900 !important;
+      }
+    }
+
+    &--primary-inverse {
+      color: var(--neutral-100) !important;
+
+      .footer__list-social .list-social__link {
+        color: var(--neutral-100) !important;
+      }
+
+      .link,
+      .policies li a {
+        @include media-breakpoint-up(md) {
+          color: rgba(245, 237, 220, 0.4) !important;
+
+          &:hover {
+            color: var(--neutral-100) !important;
+          }
+        }
+      }
+    }
+
+    &--secondary-inverse {
+      color: var(--neutral-100) !important;
+
+      .footer__list-social .list-social__link {
+        color: var(--neutral-100) !important;
+      }
+
+      .link,
+      .policies li a {
+        @include media-breakpoint-up(md) {
+          color: rgba(245, 237, 220, 0.4) !important;
+
+          &:hover {
+            color: var(--neutral-100) !important;
+          }
+        }
+      }
+    }
+
+    &--tertiary-inverse {
+      color: var(--neutral-100) !important;
+
+      .footer__list-social .list-social__link {
+        color: var(--neutral-100) !important;
+      }
+
+      .link,
+      .policies li a {
+        @include media-breakpoint-up(md) {
+          color: rgba(245, 237, 220, 0.4) !important;
+
+          &:hover {
+            color: var(--neutral-100) !important;
+          }
+        }
+      }
+    }
+
+    @each $i in (1, 2, 3, 4, 5, 6, 7) {
+      &--accent-#{$i} {
+        color: var(--neutral-100) !important;
+
+        .link {
+          color: var(--neutral-100) !important;
+        }
+
+        .policies li a {
+          color: var(--neutral-100) !important;
+        }
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,283 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "m_leadspace_tpGRLV": {
+      "type": "m-leadspace",
+      "blocks": {
+        "leadspace_content_PgdnFK": {
+          "type": "leadspace_content",
+          "settings": {
+            "eyebrow": "Accept Payments",
+            "heading": "Payment solutions to help you grow your business",
+            "title_tag": "h1",
+            "title_color": "var(--navy)",
+            "description": "Accept payments for as little as 2.25% per transaction.",
+            "description_color": "var(--navy)",
+            "button_label_first": "Find your solutions",
+            "button_link_first": "#m-buy-box",
+            "button_style_first": "primary",
+            "link_first_new_tab": false,
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "secondary-white",
+            "link_second_new_tab": false,
+            "content_top_spacing_desktop": 72
+          }
+        },
+        "leadspace_image_jh7JX3": {
+          "type": "leadspace_image",
+          "settings": {
+            "image_desktop": "shopify://shop_images/hero-image_2x_df047044-d7b6-49f0-8f99-f15d72530c27.webp",
+            "image_desktop_ratio": "81/56"
+          }
+        }
+      },
+      "block_order": [
+        "leadspace_content_PgdnFK",
+        "leadspace_image_jh7JX3"
+      ],
+      "settings": {
+        "leadspace_type": "fifty_fifty",
+        "background_class": "bg-white",
+        "section_spacing": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
+        "shadow_image": true,
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 176,
+        "padding_top_tablet": 52,
+        "padding_bottom_tablet": 56,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "m_buybox_fHBJcr": {
+      "type": "m-buybox",
+      "blocks": {
+        "box_products_Q4U4cL": {
+          "type": "box_products",
+          "settings": {
+            "box_product": "network-terminal",
+            "box_product_image": "shopify://shop_images/product-payment-terminal_2x_6bae4533-8b46-4a4e-9a0f-e0e3a0585814.webp",
+            "box_product_title": "Payment Terminal",
+            "box_product_title_tag": "h4",
+            "box_product_description": "<p>Accept payments using a dedicated payment terminal, complete with robust security features.</p>",
+            "box_cta_label": "Buy Now",
+            "box_cta_link": "shopify://products/network-terminal",
+            "box_cta_style": "primary"
+          }
+        },
+        "box_products_epDtKc": {
+          "type": "box_products",
+          "settings": {
+            "box_product": "mobile-payment",
+            "box_product_image": "shopify://shop_images/product-mobile-payment_2x_72c96601-acf5-4ef3-b6bc-6393812bb4d0.webp",
+            "box_product_title": "",
+            "box_product_title_tag": "h4",
+            "box_product_description": "<p>Accept payments right on a mobile device–no hardware needed.</p>",
+            "box_cta_label": "Buy Now",
+            "box_cta_link": "",
+            "box_cta_style": "primary"
+          }
+        },
+        "box_products_e87GXj": {
+          "type": "box_products",
+          "settings": {
+            "box_product": "payment-by-links",
+            "box_product_image": "shopify://shop_images/product-online-payment_2x_5b2e37cd-539a-4adc-987c-f6e51e7c9481.webp",
+            "box_product_title": "",
+            "box_product_title_tag": "h4",
+            "box_product_description": "<p>Accept payments through your website or payment links.</p>",
+            "box_cta_label": "Buy Now",
+            "box_cta_link": "",
+            "box_cta_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "box_products_Q4U4cL",
+        "box_products_epDtKc",
+        "box_products_e87GXj"
+      ],
+      "settings": {
+        "section_id": "m-buy-box",
+        "background_class": "bg-transparent",
+        "heading": "Start accepting payments quickly",
+        "title_tag": "h2",
+        "title_color": "var(--boldsapphire)",
+        "text_color": "var(--navy)",
+        "footer_cta_label": "Contact sales",
+        "footer_cta_link": "tel:+4733378901"
+      }
+    },
+    "m_payment_solution_XNDQFJ": {
+      "type": "m-payment-solution",
+      "blocks": {
+        "payment_feature_zp9VUi": {
+          "type": "payment_feature",
+          "settings": {
+            "feature_title": "Food & Beverage",
+            "feature_excerpt": "Perfect for restaurants, cafés, and food trucks or kiosks that require flexible payment solutions with advanced options built for the industry.",
+            "feature_description": "<p>→ Select tap to pay at checkout to accept payments from anywhere.</p><p>→ Select Network Terminal and Fortis+ at checkout to track and sync online and in-store sales, manage online deliveries, and process payments faster than before.</p>",
+            "feature_image": "shopify://shop_images/payment-food_2x_85c9c556-265d-4984-bc5d-5926debc6892.webp",
+            "feature_image_gradient": true
+          }
+        },
+        "payment_feature_TcR4YJ": {
+          "type": "payment_feature",
+          "settings": {
+            "feature_title": "Service",
+            "feature_excerpt": "We support service businesses who serve loyal customers across multiple locations.",
+            "feature_description": "<p>→ Select tap to pay at checkout to accept payments from anywhere.</p><p>→ Select Network Terminal and Fortis+ at checkout to track and sync online and in-store sales, manage online deliveries, and process payments faster than before.</p>",
+            "feature_image": "shopify://shop_images/payment-service_2x_df1c4511-f27e-408c-b4c1-5ca9a9b49c7b.webp",
+            "feature_image_gradient": true
+          }
+        },
+        "payment_feature_hp3FL9": {
+          "type": "payment_feature",
+          "settings": {
+            "feature_title": "Retail",
+            "feature_excerpt": "Perfect for boutiques, specialty stores, and pop-up stores.",
+            "feature_description": "<p>→ Select tap to pay at checkout to accept payments from anywhere.</p><p>→ Select Network Terminal and Fortis+ at checkout to track and sync online and in-store sales, manage online deliveries, and process payments faster than before.</p>",
+            "feature_image": "shopify://shop_images/paymen-retail_2x_5902540a-2080-4b48-89b3-45021fffeb2b.webp",
+            "feature_image_gradient": true
+          }
+        }
+      },
+      "block_order": [
+        "payment_feature_zp9VUi",
+        "payment_feature_TcR4YJ",
+        "payment_feature_hp3FL9"
+      ],
+      "settings": {
+        "background_class": "bg-gradient-payment",
+        "title_eyebrow": "Payment solutions built for",
+        "text_color": "var(--navy)",
+        "padding_top_desktop": 112,
+        "padding_bottom_desktop": 128,
+        "padding_top_tablet": 86,
+        "padding_bottom_tablet": 60,
+        "padding_top_mobile": 188,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "m_testimonial_slider_YUkndt": {
+      "type": "m-testimonial-slider",
+      "blocks": {
+        "testimonial_ejALWG": {
+          "type": "testimonial",
+          "settings": {
+            "content": "We added Network's Terminal to our business and we see nothing but the numbers go up! It gives an easier way for people to pay me and check out.",
+            "client": "shopify://shop_images/logo-depop.svg"
+          }
+        },
+        "testimonial_zcFGNK": {
+          "type": "testimonial",
+          "settings": {
+            "content": "AMAN We added Network's Terminal to our business and we see nothing but the numbers go up! It gives an easier way for people to pay me and check out.",
+            "client": "shopify://shop_images/logo-aman.svg"
+          }
+        },
+        "testimonial_XDfWUp": {
+          "type": "testimonial",
+          "settings": {
+            "content": "Social point We added Network's Terminal to our business and we see nothing but the numbers go up! It gives an easier way for people to pay me and check out.",
+            "client": "shopify://shop_images/logo-socialpoint.svg"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_ejALWG",
+        "testimonial_zcFGNK",
+        "testimonial_XDfWUp"
+      ],
+      "settings": {
+        "background_class": "bg-primary",
+        "heading": "Why businesses choose Network International",
+        "title_tag": "h5",
+        "padding_top_desktop": 136,
+        "padding_bottom_desktop": 156,
+        "padding_top_tablet": 54,
+        "padding_bottom_tablet": 54,
+        "padding_top_mobile": 104,
+        "padding_bottom_mobile": 96,
+        "slide_change_on_hover": false,
+        "auto_play": false
+      }
+    },
+    "m_payment_ecosystem_mUne3X": {
+      "type": "m-payment-ecosystem",
+      "blocks": {
+        "feature_NMd33p": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_4.svg",
+            "feature_title": "24/7 Local Support",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Support available by email, phone, or chat</li><li>Technical support</li><li>Comprehensive knowledge base</li></ul>"
+          }
+        },
+        "feature_gQFfkJ": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_5.svg",
+            "feature_title": "On-Site Setup\nand Assistance",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Professional installation</li><li>Staff training</li><li>Ongoing technical assistance</li></ul>"
+          }
+        },
+        "feature_c6KN9B": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_6.svg",
+            "feature_title": "Next Day Settlement",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Get your funds faster</li><li>Transparent payouts</li><li>Control payout timing</li></ul>"
+          }
+        },
+        "feature_67H79a": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/Mask_group_3.svg",
+            "feature_title": "Quick setup",
+            "feature_title_tag": "h4",
+            "feature_description": "<ul><li>Order today, receive your terminal tomorrow</li><li>Start taking payments in 3 steps</li><li>Simple activation process</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_NMd33p",
+        "feature_gQFfkJ",
+        "feature_c6KN9B",
+        "feature_67H79a"
+      ],
+      "name": "Payment Ecosystem",
+      "settings": {
+        "background_class": "bg-secondary",
+        "column_layout": "one-third-by-two-thirds",
+        "section_title": "Complete Payment Ecosystem",
+        "section_title_tag": "h2",
+        "section_description": "",
+        "padding_top_desktop": 162,
+        "padding_bottom_desktop": 136,
+        "padding_top_tablet": 80,
+        "padding_bottom_tablet": 54,
+        "padding_top_mobile": 96,
+        "padding_bottom_mobile": 96
+      }
+    }
+  },
+  "order": [
+    "m_leadspace_tpGRLV",
+    "m_buybox_fHBJcr",
+    "m_payment_solution_XNDQFJ",
+    "m_testimonial_slider_YUkndt",
+    "m_payment_ecosystem_mUne3X"
+  ]
+}
