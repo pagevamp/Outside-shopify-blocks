@@ -140,14 +140,16 @@
                 height="480"
               />
             </picture>
+          {% else %}
+          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
           {% endif %}
         {% endfor %}
     </div>
   {% endif %}
   <div class="m-leadspace__container position-relative z-1">
     <div class="container">
-      <div class="row {% if section.settings.shadow_image %}align-items-xl-center{% endif %}">
-        <div class="col-md-6 col-xl-5">
+      <div class="row {% if section.settings.shadow_image %}align-items-xl-center{% endif %} {% if section.settings.row_reverse %}flex-row-reverse{% endif %}">
+        <div class="col-md-6 col-xl-5 {% if section.settings.row_reverse %}offset-xl-1{% endif %}">
           <div class="m-leadspace__content d-flex flex-column align-items-center d-md-block{% if section.settings.leadspace_type == 'full_bleed_desktop' %} me-lg-14{% else %} mb-10 mb-md-0 {% endif %} me-xl-n12">
             {% liquid assign leadspace_content = section.blocks | where : "type", "leadspace_content" %}
             {%- for block in leadspace_content -%}
@@ -206,7 +208,7 @@
           </div>
         </div>
         {% if section.settings.leadspace_type == 'fifty_fifty' %}
-          <div class="offset-xl-1 col-md-6">
+          <div class="col-md-6 {% unless section.settings.row_reverse %}offset-xl-1{% endunless %}">
             {% comment %} Leadpace picture {% endcomment %}
             {% liquid assign leadspace_image = section.blocks | where : "type", "leadspace_image" %}
             {%- for block in leadspace_image -%}
@@ -260,6 +262,8 @@
                     />
                   </picture>
                 </div>
+              {% else %}
+              {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
               {% endif %}
             {% endfor %}
             {% comment %} End Leadpace picture {% endcomment %}
@@ -381,6 +385,12 @@
         "default": true
       },
       {
+        "type": "checkbox",
+        "id": "row_reverse",
+        "label": "Row reverse",
+        "default": false
+      },
+      {
         "type": "header",
         "content": "SPACING SETTINGS"
       },
@@ -402,7 +412,7 @@
         "step": 2,
         "unit": "px",
         "label": "Padding Bottom Desktop",
-        "default": 50
+        "default": 100
       },
       {
         "type": "range",
@@ -412,7 +422,7 @@
         "step": 2,
         "unit": "px",
         "label": "Padding Top Tablet",
-        "default": 98
+        "default": 86
       },
       {
         "type": "range",
@@ -428,21 +438,21 @@
         "type": "range",
         "id": "padding_top_mobile",
         "min": 0,
-        "max": 150,
+        "max": 100,
         "step": 2,
         "unit": "px",
         "label": "Padding Top Mobile",
-        "default": 40
+        "default": 60
       },
       {
         "type": "range",
         "id": "padding_bottom_mobile",
         "min": 0,
-        "max": 150,
+        "max": 100,
         "step": 2,
         "unit": "px",
         "label": "Padding Bottom Mobile",
-        "default": 98
+        "default": 68
       }
     ],
     "blocks": [
@@ -495,13 +505,14 @@
           {
             "type": "text",
             "id": "eyebrow",
-            "label": "Eyebrow"
+            "label": "Eyebrow",
+            "default": "Eyebrow"
           },
           {
             "type": "textarea",
             "id": "heading",
             "label": "Heading",
-            "default": "Payment solutions to help you grow your business"            
+            "default": "Leadspace"            
           },
           {
             "type": "select",
@@ -555,7 +566,7 @@
             "type": "textarea",
             "id": "description",
             "label": "Description",
-            "default": "Accept payments for as little as 2.25% per transaction."
+            "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo."
           },
           {
             "type": "select",
@@ -585,7 +596,7 @@
             "type": "text",
             "id": "button_label_first",
             "label": "Button Label First",
-            "default": "Find your solution"
+            "default": "Button Label"
           },
           {
             "type": "url",
@@ -621,7 +632,8 @@
           {
             "type": "text",
             "id": "button_label_second",
-            "label": "Button Label Second"
+            "label": "Button Label Second",
+            "default": "Button Label Second"
           },
           {
             "type": "url",
@@ -646,7 +658,7 @@
                 "label": "Secondary White"
               }
             ],
-            "default": "primary"
+            "default": "secondary"
           },
           {
             "type": "checkbox",
@@ -665,7 +677,7 @@
             "step": 2,
             "unit": "px",
             "label": "Content Margin top",
-            "default": 82
+            "default": 0
           }
         ]
       },

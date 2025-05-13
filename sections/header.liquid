@@ -135,7 +135,7 @@
         {%- if request.page_type == 'index' -%}
           <div class="header__heading me-auto d-flex">
         {%- endif -%}
-        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset me-auto p-0 ms-0">
+        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset me-auto p-0 ms-0  text-decoration-none">
           {%- if settings.logo != blank -%}
             <div class="header__heading-logo-wrapper">
               {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -156,7 +156,7 @@
               }}
             </div>
           {%- else -%}
-            <span class="h2">{{ shop.name }}</span>
+            <span class="h4 mb-0">{{ shop.name }}</span>
           {%- endif -%}
         </a>
         {%- if request.page_type == 'index' -%}
