@@ -1,0 +1,82 @@
+@import './common';
+
+.m-leadspace {
+  $self: &;
+
+  &__no-gutter {
+    margin-right: calc(var(--bs-gutter-x) * -2);
+    margin-left: calc(var(--bs-gutter-x) * -2);
+    width: calc(100% + var(--bs-gutter-x) * 2 * 2);
+  }
+  
+  &__video-wrapper {
+    max-height: 66.5rem;
+  }
+
+  &__content {
+    @include media-breakpoint-up(md) {
+      max-width: 65.4rem;
+    }
+  }
+
+  &__buttons {
+    .m-leadspace__sub-description {
+      max-width: 19.7rem;
+      flex: 1;
+    }
+  }
+
+  &--circle-animation {
+    #{$self}__image-wrapper {
+      bottom: -11.4%;
+      margin-top: calc(3.4rem - 11.4%);
+    
+      @include media-breakpoint-up(md) {
+        margin-top: calc(4.5rem - 11.4%);
+      }
+    }
+
+    #{$self}__image {
+      left: 49.7%;
+      top: 0.5rem;
+      width: 55%;
+
+      &--second {
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+      }
+    }
+    &-fixed {
+      #{$self}__image {
+        left: 50%;
+        top: 51.8%;
+      }
+    }
+  }
+
+  &--fifty {
+    #{$self}__content {
+      @include media-breakpoint-up(md) {
+        max-width: 72.2rem;
+      }
+    }
+
+    #{$self}__no-gutter {
+      @include media-breakpoint-up(md) {
+        margin-right: calc(var(--bs-gutter-x) * -2.5);
+        width: calc(100% + var(--bs-gutter-x) * 2.5);
+      }
+    }
+
+    #{$self}__image.ratio-1x1 {
+      @include media-breakpoint-up(md) {
+        --bs-aspect-ratio: 77.7777777778%;
+      }
+    }
+  }
+
+  &--full-bleed {
+    #{$self}__description {
+      max-width: 54.6rem;
+    }
+  }
+}

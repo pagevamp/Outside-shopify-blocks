@@ -7,7 +7,8 @@ module.exports = {
   entry: {
     ni: ['./assets/scripts/script.js', './assets/styles/style.scss'],
     ni_styleguide: ['./assets/styles/styleguide.scss'],
-    ni_leadspace: './assets/styles/ni-leadspace.scss',
+    ob_leadspace: './assets/styles/ob-leadspace.scss',
+    ob_leadspace_2: './assets/styles/ob-leadspace-2.scss',
     ni_payment_solution: './assets/styles/ni-payment-solution.scss',
     ni_ecomm_features: './assets/styles/ni-ecomm-features.scss',
     ni_online_payments: './assets/styles/ni-online-payments.scss',

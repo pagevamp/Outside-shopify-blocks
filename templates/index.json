@@ -9,6 +9,39 @@
  */
 {
   "sections": {
+    "sidebar_iAwgJt": {
+      "type": "sidebar",
+      "blocks": {
+        "sidebar_link_FLKanX": {
+          "type": "sidebar_link",
+          "settings": {
+            "sidebar_link_title": "Leadspace 1",
+            "sidebar_link_id": "shopify-section-template--24523862049067__leadspace_JHTpfw"
+          }
+        },
+        "sidebar_link_JL4h8y": {
+          "type": "sidebar_link",
+          "settings": {
+            "sidebar_link_title": "Leadpace 2",
+            "sidebar_link_id": "shopify-section-template--24523862049067__leadspace_2_edERUK"
+          }
+        },
+        "sidebar_link_jhpmMa": {
+          "type": "sidebar_link",
+          "settings": {
+            "sidebar_link_title": "Leadspace 3",
+            "sidebar_link_id": "shopify-section-template--24523862049067__leadspace_3_Ph9r9Y"
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_link_FLKanX",
+        "sidebar_link_JL4h8y",
+        "sidebar_link_jhpmMa"
+      ],
+      "name": "Sidebar",
+      "settings": {}
+    },
     "leadspace_JHTpfw": {
       "type": "leadspace",
       "blocks": {
@@ -58,55 +91,6 @@
         "padding_bottom_mobile": 68
       }
     },
-    "leadspace_dfwiMD": {
-      "type": "leadspace",
-      "blocks": {
-        "leadspace_content_eDr3kU": {
-          "type": "leadspace_content",
-          "settings": {
-            "eyebrow": "Eyebrow",
-            "heading": "Leadspace",
-            "title_tag": "h1",
-            "title_color": "var(--navy)",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.",
-            "description_color": "var(--navy)",
-            "button_label_first": "Button Label",
-            "button_link_first": "",
-            "button_style_first": "primary",
-            "link_first_new_tab": false,
-            "button_label_second": "Button Label Second",
-            "button_link_second": "",
-            "button_style_second": "secondary",
-            "link_second_new_tab": false,
-            "content_top_spacing_desktop": 0
-          }
-        },
-        "leadspace_image_Q8c3Mf": {
-          "type": "leadspace_image",
-          "settings": {
-            "image_desktop_ratio": "81/56"
-          }
-        }
-      },
-      "block_order": [
-        "leadspace_content_eDr3kU",
-        "leadspace_image_Q8c3Mf"
-      ],
-      "name": "Leadspace",
-      "settings": {
-        "leadspace_type": "fifty_fifty",
-        "background_class": "bg-white",
-        "section_spacing": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
-        "shadow_image": true,
-        "row_reverse": true,
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 100,
-        "padding_top_tablet": 86,
-        "padding_bottom_tablet": 86,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 68
-      }
-    },
     "leadspace_Pecgch": {
       "type": "leadspace",
       "blocks": {
@@ -148,55 +132,6 @@
         "section_spacing": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
         "shadow_image": true,
         "row_reverse": false,
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 100,
-        "padding_top_tablet": 86,
-        "padding_bottom_tablet": 86,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 68
-      }
-    },
-    "leadspace_NmbVXk": {
-      "type": "leadspace",
-      "blocks": {
-        "leadspace_content_3aQy6F": {
-          "type": "leadspace_content",
-          "settings": {
-            "eyebrow": "Eyebrow",
-            "heading": "Leadspace",
-            "title_tag": "h1",
-            "title_color": "var(--navy)",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.",
-            "description_color": "var(--navy)",
-            "button_label_first": "Button Label",
-            "button_link_first": "",
-            "button_style_first": "primary",
-            "link_first_new_tab": false,
-            "button_label_second": "Button Label Second",
-            "button_link_second": "",
-            "button_style_second": "secondary-white",
-            "link_second_new_tab": false,
-            "content_top_spacing_desktop": 0
-          }
-        },
-        "leadspace_image_bEWzVD": {
-          "type": "leadspace_image",
-          "settings": {
-            "image_desktop_ratio": "81/56"
-          }
-        }
-      },
-      "block_order": [
-        "leadspace_content_3aQy6F",
-        "leadspace_image_bEWzVD"
-      ],
-      "name": "Leadspace",
-      "settings": {
-        "leadspace_type": "full_bleed_desktop",
-        "background_class": "bg-white",
-        "section_spacing": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
-        "shadow_image": true,
-        "row_reverse": true,
         "padding_top_desktop": 100,
         "padding_bottom_desktop": 100,
         "padding_top_tablet": 86,
@@ -265,73 +200,151 @@
         "padding_bottom_mobile": 68
       }
     },
-    "leadspace_qDY3ET": {
-      "type": "leadspace",
+    "leadspace_2_edERUK": {
+      "type": "leadspace-2",
       "blocks": {
-        "leadspace_content_iy8bjM": {
+        "leadspace_image_fiXNgX": {
+          "type": "leadspace_image",
+          "settings": {
+            "show_overlay": true,
+            "video_loop": true,
+            "circular_animation_width": "circular-animation-full",
+            "circular_image_scale": 1
+          }
+        },
+        "leadspace_content_C4rFhR": {
           "type": "leadspace_content",
           "settings": {
-            "eyebrow": "Eyebrow",
-            "heading": "Leadspace",
+            "content_color_class": "text-secondary",
+            "section_title": "Leadspace 2",
             "title_tag": "h1",
-            "title_color": "var(--navy)",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.",
-            "description_color": "var(--navy)",
-            "button_label_first": "Button Label",
-            "button_link_first": "",
-            "button_style_first": "primary",
-            "link_first_new_tab": false,
-            "button_label_second": "Button Label Second",
-            "button_link_second": "",
-            "button_style_second": "primary",
-            "link_second_new_tab": false,
-            "content_top_spacing_desktop": 0
-          }
-        },
-        "pricing_card_4wLYDP": {
-          "type": "pricing_card",
-          "settings": {
-            "pricing_title": "Title Lorem ipsum dolor sit,",
-            "pricing_description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur omnis corrupti explicabo corporis minus dolores.",
-            "pricing_theme": "bg-bold-amaranth"
-          }
-        },
-        "pricing_card_D7tzqe": {
-          "type": "pricing_card",
-          "settings": {
-            "pricing_title": "Title Lorem ipsum dolor sit,",
-            "pricing_description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur omnis corrupti explicabo corporis minus dolores.",
-            "pricing_theme": "bg-teal"
+            "section_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.",
+            "first_button_label": "First Button",
+            "first_button_link": "/",
+            "first_btn_style": "primary",
+            "second_button_label": "Second Button",
+            "second_button_link": "/",
+            "second_btn_style": "secondary--dark",
+            "section_sub_description": ""
           }
         }
       },
       "block_order": [
-        "leadspace_content_iy8bjM",
-        "pricing_card_4wLYDP",
-        "pricing_card_D7tzqe"
+        "leadspace_image_fiXNgX",
+        "leadspace_content_C4rFhR"
       ],
-      "name": "Leadspace",
+      "name": "Leadspace 2",
+      "settings": {
+        "leadspace_type": "circular_animation",
+        "section_theme": "bg-stone-500",
+        "reverse_content": false
+      }
+    },
+    "leadspace_2_xi6XCV": {
+      "type": "leadspace-2",
+      "blocks": {
+        "leadspace_image_i4F4Hz": {
+          "type": "leadspace_image",
+          "settings": {
+            "show_overlay": true,
+            "video_loop": true,
+            "circular_animation_width": "circular-animation-full",
+            "circular_image_scale": 1
+          }
+        },
+        "leadspace_content_UW8M7h": {
+          "type": "leadspace_content",
+          "settings": {
+            "content_color_class": "text-secondary",
+            "section_title": "Leadspace 2",
+            "title_tag": "h1",
+            "section_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.",
+            "first_button_label": "First Button",
+            "first_button_link": "/",
+            "first_btn_style": "primary",
+            "second_button_label": "Second Button",
+            "second_button_link": "/",
+            "second_btn_style": "secondary--dark",
+            "section_sub_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "leadspace_image_i4F4Hz",
+        "leadspace_content_UW8M7h"
+      ],
+      "name": "Leadspace 2",
+      "settings": {
+        "leadspace_type": "full_bleed_desktop",
+        "section_theme": "bg-stone-500",
+        "reverse_content": false
+      }
+    },
+    "leadspace_2_FtfiPY": {
+      "type": "leadspace-2",
+      "blocks": {
+        "leadspace_image_cwfhDe": {
+          "type": "leadspace_image",
+          "settings": {
+            "show_overlay": true,
+            "video_loop": true,
+            "circular_animation_width": "circular-animation-full",
+            "circular_image_scale": 1
+          }
+        },
+        "leadspace_content_PTEeBm": {
+          "type": "leadspace_content",
+          "settings": {
+            "content_color_class": "text-secondary",
+            "section_title": "Leadspace 2",
+            "title_tag": "h1",
+            "section_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.",
+            "first_button_label": "First Button",
+            "first_button_link": "/",
+            "first_btn_style": "primary",
+            "second_button_label": "Second Button",
+            "second_button_link": "/",
+            "second_btn_style": "secondary--dark",
+            "section_sub_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "leadspace_image_cwfhDe",
+        "leadspace_content_PTEeBm"
+      ],
+      "name": "Leadspace 2",
       "settings": {
         "leadspace_type": "fifty_fifty",
-        "background_class": "bg-white",
-        "section_spacing": "pt-10 pb-14 pt-lg-13 pb-lg-10 pt-xl-18 pb-xl-44",
-        "shadow_image": true,
-        "row_reverse": true,
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 100,
-        "padding_top_tablet": 86,
-        "padding_bottom_tablet": 86,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 68
+        "section_theme": "bg-stone-500",
+        "reverse_content": false
+      }
+    },
+    "leadspace_3_Ph9r9Y": {
+      "type": "leadspace-3",
+      "name": "Leadspace 3",
+      "settings": {
+        "section_bg_desktop_ratio": "18/5",
+        "section_bg_mobile_ratio": "195/103",
+        "bg_overlay_options": "no-overlay",
+        "section_title": "Leadspace 3",
+        "title_tag": "h1",
+        "section_description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque sint adipisci perspiciatis impedit. Provident in aperiam at! Eaque, accusantium explicabo.</p>",
+        "content_vertical_alignment": "align-items-end",
+        "content_horizontal_alignment": "text-start",
+        "title_color_class": "text-stone-500",
+        "enable_sticky": true
       }
     }
   },
   "order": [
+    "sidebar_iAwgJt",
     "leadspace_JHTpfw",
-    "leadspace_dfwiMD",
     "leadspace_Pecgch",
-    "leadspace_NmbVXk",
     "leadspace_6dhLyn",
-    "leadspace_qDY3ET"
+    "leadspace_2_edERUK",
+    "leadspace_2_xi6XCV",
+    "leadspace_2_FtfiPY",
+    "leadspace_3_Ph9r9Y"
   ]
 }
